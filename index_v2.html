@@ -105,13 +105,13 @@
     .card:hover img,
     .card:hover video { transform: scale(1.03); }
 
-    /* Fixed heights per row type */
-    .row-1  .card { height: 56vw; max-height: 800px; }
-    .row-2  .card { height: 46vw; max-height: 660px; }
-    .row-3  .card { height: 34vw; max-height: 480px; }
-    .row-a  .card,
-    .row-b  .card { height: 50vw; max-height: 680px; }
-    .row-c  .card { height: 44vw; max-height: 620px; }
+    /* Aspect ratios — let images breathe */
+    .row-1  .card { aspect-ratio: 3/4; }
+    .row-2  .card { aspect-ratio: 2/3; }
+    .row-3  .card { aspect-ratio: 3/4; }
+    .row-a  .card { aspect-ratio: 3/4; }
+    .row-b  .card { aspect-ratio: 3/4; }
+    .row-c  .card { aspect-ratio: 3/4; }
 
     /* Caption on hover */
     .caption {
