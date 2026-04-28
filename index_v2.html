@@ -97,21 +97,14 @@
     .card img,
     .card video {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
       transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .card:hover img,
     .card:hover video { transform: scale(1.03); }
 
-    /* Aspect ratios — let images breathe */
-    .row-1  .card { aspect-ratio: 3/4; }
-    .row-2  .card { aspect-ratio: 2/3; }
-    .row-3  .card { aspect-ratio: 3/4; }
-    .row-a  .card { aspect-ratio: 3/4; }
-    .row-b  .card { aspect-ratio: 3/4; }
-    .row-c  .card { aspect-ratio: 3/4; }
+    /* Natural image proportions — no cropping */
 
     /* Caption on hover */
     .caption {
@@ -286,7 +279,7 @@
         </div>
       </div>
       <div class="card">
-        <img src="Selected/maria_nila.jpeg" alt="Maria Nila"/>
+        <img src="Selected/maria_nila.png" alt="Maria Nila"/>
         <div class="caption">
           <div class="caption-brand">Maria Nila</div>
           <div class="caption-type">AI Image</div>
