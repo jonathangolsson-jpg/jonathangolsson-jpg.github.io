@@ -7,144 +7,130 @@
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-    :root {
-      --bg:    #1a1a1a;
-      --text:  #ffffff;
-      --muted: #777777;
-      --border: rgba(255,255,255,0.08);
-      --gap: 3px;
-    }
-
-    html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: #1a1a1a;
+      color: #fff;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed; top:0; left:0; right:0; z-index:100;
       display: flex; justify-content: space-between; align-items: center;
       padding: 22px 48px;
-      background: rgba(26,26,26,0.94);
+      background: rgba(26,26,26,0.95);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
     .nav-name {
-      font-size: 12px; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--text); text-decoration: none;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #fff; text-decoration: none;
     }
-    .nav-links { display:flex; gap:36px; list-style:none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: 11px; letter-spacing: 0.1em;
-      text-transform: uppercase; font-weight: 400;
-      transition: color .2s;
+    nav ul { display:flex; gap:36px; list-style:none; }
+    nav ul a {
+      color: #666; text-decoration: none; font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase; transition: color .2s;
     }
-    .nav-links a:hover { color: var(--text); }
+    nav ul a:hover { color: #fff; }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
-      height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 48px 72px;
+      height: 100vh; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 0 48px 72px;
     }
-    .hero-eyebrow {
+    .hero small {
       font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 16px;
+      color: #555; display: block; margin-bottom: 16px;
     }
-    .hero-title {
-      font-size: clamp(56px, 8vw, 100px);
-      font-weight: 700; line-height: 0.9;
-      letter-spacing: -0.04em; color: var(--text);
+    .hero h1 {
+      font-size: clamp(60px, 9vw, 108px); font-weight: 700;
+      line-height: 0.88; letter-spacing: -0.04em; color: #fff;
       margin-bottom: 28px;
     }
-    .hero-meta {
-      border-top: 1px solid var(--border); padding-top: 18px;
-      display: flex; gap: 36px;
-      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--muted);
+    .hero-bar {
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 18px;
+      display: flex; gap: 36px; font-size: 10px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #555;
     }
 
-    /* ── GRID ── */
-    .grid {
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap);
-    }
-
-    .row {
+    /* GRID — two columns with equal heights per row */
+    .works {
       display: grid;
-      gap: var(--gap);
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      padding: 0;
     }
-    .row-1   { grid-template-columns: 1fr; }
-    .row-2   { grid-template-columns: 1fr 1fr; }
-    .row-3   { grid-template-columns: 1fr 1fr 1fr; }
-    .row-a   { grid-template-columns: 3fr 2fr; }   /* wide left */
-    .row-b   { grid-template-columns: 2fr 3fr; }   /* wide right */
-    .row-c   { grid-template-columns: 1fr 2fr 1fr; } /* wide center */
 
-    /* ── CARD ── */
-    .card {
+    /* Full-width items span both columns */
+    .full { grid-column: 1 / -1; }
+
+    /* Each item */
+    .item {
       position: relative;
       overflow: hidden;
-      background: #111;
+      background: #0f0f0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .card img,
-    .card video {
+
+    /* Images show at full width, natural height */
+    .item img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+      transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
     }
-    .card:hover img,
-    .card:hover video { transform: scale(1.03); }
+    .item:hover img { transform: scale(1.025); }
 
-    /* Natural image proportions — no cropping */
+    /* Videos: use padding-bottom to create container */
+    .video-wrap {
+      width: 100%;
+      position: relative;
+    }
+    .video-wrap video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-    /* Caption on hover */
-    .caption {
+    /* Caption */
+    .cap {
       position: absolute; bottom:0; left:0; right:0;
-      padding: 36px 28px 22px;
-      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.35s;
+      padding: 48px 28px 22px;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+      opacity: 0; transition: opacity 0.3s;
     }
-    .card:hover .caption { opacity: 1; }
-    .caption-brand {
-      font-size: 11px; font-weight: 500;
+    .item:hover .cap { opacity: 1; }
+    .cap b {
+      display: block; font-size: 11px; font-weight: 500;
       letter-spacing: 0.16em; text-transform: uppercase; color: #fff;
     }
-    .caption-type {
-      font-size: 9px; color: rgba(255,255,255,0.5);
+    .cap span {
+      display: block; font-size: 9px; color: rgba(255,255,255,0.45);
       letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px;
     }
 
-    /* ── SECTION LABEL ── */
-    .section-label {
-      padding: 60px 48px 32px;
+    /* Divider */
+    .divider {
+      grid-column: 1 / -1;
+      padding: 56px 48px 28px;
       font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--muted); border-top: 1px solid var(--border);
+      color: #444; border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    /* ── FOOTER ── */
     footer {
-      padding: 36px 48px;
-      margin-top: 80px;
-      border-top: 1px solid var(--border);
+      grid-column: 1 / -1;
+      padding: 36px 48px; margin-top: 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
       display: flex; justify-content: space-between; align-items: center;
     }
     footer span, footer a {
       font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none; transition: color .2s;
+      color: #444; text-decoration: none; transition: color .2s;
     }
-    footer a:hover { color: var(--text); }
+    footer a:hover { color: #fff; }
 
-    /* hide native video controls */
     video::-webkit-media-controls,
     video::-webkit-media-controls-enclosure,
     video::-webkit-media-controls-panel { display:none !important; }
@@ -153,149 +139,106 @@
 </head>
 <body>
 
-  <nav>
-    <a href="#" class="nav-name">Jonathan Olsson</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Full Portfolio</a></li>
-      <li><a href="mailto:jonathangertolsson@gmail.com">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a href="#" class="nav-name">Jonathan Olsson</a>
+  <ul>
+    <li><a href="index.html">Full Portfolio</a></li>
+    <li><a href="mailto:jonathangertolsson@gmail.com">Contact</a></li>
+  </ul>
+</nav>
 
-  <section class="hero">
-    <p class="hero-eyebrow">Selected Work</p>
-    <h1 class="hero-title">Creative<br>Direction</h1>
-    <div class="hero-meta">
-      <span>AI Image &amp; Video</span>
-      <span>Scandinavian Brands</span>
-      <span>Performance Creative</span>
+<section class="hero">
+  <small>Selected Work</small>
+  <h1>Creative<br>Direction</h1>
+  <div class="hero-bar">
+    <span>AI Image &amp; Video</span>
+    <span>Scandinavian Brands</span>
+    <span>Performance Creative</span>
+  </div>
+</section>
+
+<div class="works">
+
+  <div class="divider">Selected — 13 works</div>
+
+  <!-- 1+2: Tom Wood + Sachajuan -->
+  <div class="item">
+    <img src="Selected/tomwood.jpeg" alt="Tom Wood" loading="lazy"/>
+    <div class="cap"><b>Tom Wood</b><span>Jewellery — Spec Creative</span></div>
+  </div>
+  <div class="item">
+    <img src="Selected/sachajuan.png" alt="Sachajuan" loading="lazy"/>
+    <div class="cap"><b>Sachajuan</b><span>Hair Care — Spec Creative</span></div>
+  </div>
+
+  <!-- 3: Maria Nilsdotter video (full) -->
+  <div class="item full">
+    <div class="video-wrap">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/nilsdotter.mp4" type="video/mp4"/>
+      </video>
     </div>
-  </section>
+    <div class="cap"><b>Maria Nilsdotter</b><span>AI Video</span></div>
+  </div>
 
-  <p class="section-label">Selected — 13 works</p>
+  <!-- 4+5: Pernille + CAIA boat -->
+  <div class="item">
+    <img src="Selected/pernille.jpeg" alt="Pernille Corydon" loading="lazy"/>
+    <div class="cap"><b>Pernille Corydon</b><span>Jewellery — Spec Creative</span></div>
+  </div>
+  <div class="item">
+    <img src="Selected/caia_boat.png" alt="CAIA" loading="lazy"/>
+    <div class="cap"><b>CAIA</b><span>AI Image</span></div>
+  </div>
 
-  <div class="grid">
+  <!-- 6+7+8: EVY 7 + Revision + EVY 17 -->
+  <div class="item">
+    <img src="Selected/evy_7.png" alt="EVY Tech" loading="lazy"/>
+    <div class="cap"><b>EVY Tech</b><span>AI Image</span></div>
+  </div>
+  <div class="item">
+    <img src="Selected/revision.jpeg" alt="Revision Skincare" loading="lazy"/>
+    <div class="cap"><b>Revision Skincare</b><span>Skincare — Spec Creative</span></div>
+  </div>
 
-    <!-- Row 1: Tom Wood + Sachajuan (equal, tall) -->
-    <div class="row row-2">
-      <div class="card">
-        <img src="Selected/tomwood.jpeg" alt="Tom Wood"/>
-        <div class="caption">
-          <div class="caption-brand">Tom Wood</div>
-          <div class="caption-type">Jewellery — Spec Creative</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="Selected/sachajuan.png" alt="Sachajuan"/>
-        <div class="caption">
-          <div class="caption-brand">Sachajuan</div>
-          <div class="caption-type">Hair Care — Spec Creative</div>
-        </div>
-      </div>
+  <!-- 8 full: Coelho video -->
+  <div class="item full">
+    <div class="video-wrap">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/coelho_video.mp4" type="video/mp4"/>
+      </video>
     </div>
+    <div class="cap"><b>Coelho</b><span>AI Video</span></div>
+  </div>
 
-    <!-- Row 2: Maria Nilsdotter video (wide) + Pernille Corydon -->
-    <div class="row row-b">
-      <div class="card">
-        <video autoplay loop muted playsinline preload="auto">
-          <source src="Selected/nilsdotter.mp4" type="video/mp4"/>
-        </video>
-        <div class="caption">
-          <div class="caption-brand">Maria Nilsdotter</div>
-          <div class="caption-type">AI Video</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="Selected/pernille.jpeg" alt="Pernille Corydon"/>
-        <div class="caption">
-          <div class="caption-brand">Pernille Corydon</div>
-          <div class="caption-type">Jewellery — Spec Creative</div>
-        </div>
-      </div>
+  <!-- 9+10: EVY 17 + Maria Nila -->
+  <div class="item">
+    <img src="Selected/evy_17.png" alt="EVY Tech" loading="lazy"/>
+    <div class="cap"><b>EVY Tech</b><span>AI Image</span></div>
+  </div>
+  <div class="item">
+    <img src="Selected/maria_nila.png" alt="Maria Nila" loading="lazy"/>
+    <div class="cap"><b>Maria Nila</b><span>AI Image</span></div>
+  </div>
+
+  <!-- 11: Caroline Svedbom video (full) -->
+  <div class="item full">
+    <div class="video-wrap">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/caroline.mp4" type="video/mp4"/>
+      </video>
     </div>
+    <div class="cap"><b>Caroline Svedbom</b><span>AI Video</span></div>
+  </div>
 
-    <!-- Row 3: CAIA boat (full) -->
-    <div class="row row-1">
-      <div class="card">
-        <img src="Selected/caia_boat.png" alt="CAIA"/>
-        <div class="caption">
-          <div class="caption-brand">CAIA</div>
-          <div class="caption-type">AI Image</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 4: EVY 7 + Revision + EVY 17 -->
-    <div class="row row-3">
-      <div class="card">
-        <img src="Selected/evy_7.png" alt="EVY Tech"/>
-        <div class="caption">
-          <div class="caption-brand">EVY Tech</div>
-          <div class="caption-type">AI Image</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="Selected/revision.jpeg" alt="Revision Skincare"/>
-        <div class="caption">
-          <div class="caption-brand">Revision Skincare</div>
-          <div class="caption-type">Skincare — Spec Creative</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="Selected/evy_17.png" alt="EVY Tech"/>
-        <div class="caption">
-          <div class="caption-brand">EVY Tech</div>
-          <div class="caption-type">AI Image</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 5: Coelho (wide) + Caroline Svedbom video -->
-    <div class="row row-a">
-      <div class="card">
-        <video autoplay loop muted playsinline preload="auto">
-          <source src="Selected/coelho_video.mp4" type="video/mp4"/>
-        </video>
-        <div class="caption">
-          <div class="caption-brand">Coelho</div>
-          <div class="caption-type">AI Image</div>
-        </div>
-      </div>
-      <div class="card">
-        <video autoplay loop muted playsinline preload="auto">
-          <source src="Selected/caroline.mp4" type="video/mp4"/>
-        </video>
-        <div class="caption">
-          <div class="caption-brand">Caroline Svedbom</div>
-          <div class="caption-type">AI Video</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 6: NOCCO + Maria Nila + CAIA dinner -->
-    <div class="row row-3">
-      <div class="card">
-        <img src="Selected/nocco.png" alt="NOCCO"/>
-        <div class="caption">
-          <div class="caption-brand">NOCCO</div>
-          <div class="caption-type">Beverage — Spec Creative</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="Selected/maria_nila.png" alt="Maria Nila"/>
-        <div class="caption">
-          <div class="caption-brand">Maria Nila</div>
-          <div class="caption-type">AI Image</div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="Selected/caia_dinner.png" alt="CAIA"/>
-        <div class="caption">
-          <div class="caption-brand">CAIA</div>
-          <div class="caption-type">AI Image</div>
-        </div>
-      </div>
-    </div>
-
+  <!-- 12+13: NOCCO + CAIA dinner -->
+  <div class="item">
+    <img src="Selected/nocco.png" alt="NOCCO" loading="lazy"/>
+    <div class="cap"><b>NOCCO</b><span>Beverage — Spec Creative</span></div>
+  </div>
+  <div class="item">
+    <img src="Selected/caia_dinner.png" alt="CAIA" loading="lazy"/>
+    <div class="cap"><b>CAIA</b><span>AI Image</span></div>
   </div>
 
   <footer>
@@ -304,5 +247,6 @@
     <a href="index.html">Full Portfolio →</a>
   </footer>
 
+</div>
 </body>
 </html>
