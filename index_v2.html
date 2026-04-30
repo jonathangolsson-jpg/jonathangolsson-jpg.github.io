@@ -58,11 +58,9 @@
       color: #444; border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    /* Two-column masonry using CSS columns */
     .masonry {
       columns: 2;
       column-gap: 3px;
-      padding: 0;
     }
 
     .card {
@@ -74,26 +72,18 @@
       display: block;
     }
 
-    .card img,
-    .card video {
+    .card img, .card video {
       width: 100%;
       height: auto;
       display: block;
       transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
     }
-    .card:hover img,
-    .card:hover video { transform: scale(1.025); }
+    .card:hover img, .card:hover video { transform: scale(1.025); }
 
-    /* CAIA boat — force 9:16 crop */
-    .card.crop-916 {
-      aspect-ratio: 9/16;
-      overflow: hidden;
-    }
+    .card.crop-916 { aspect-ratio: 9/16; }
     .card.crop-916 img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
     }
 
     .cap {
@@ -112,6 +102,8 @@
       letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px;
     }
 
+    .page { padding: 0 3px; }
+
     footer {
       padding: 36px 0; margin-top: 3px;
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -122,8 +114,6 @@
       color: #444; text-decoration: none; transition: color .2s;
     }
     footer a:hover { color: #fff; }
-
-    .page { padding: 0 3px; }
 
     video::-webkit-media-controls,
     video::-webkit-media-controls-enclosure,
@@ -152,11 +142,11 @@
 </section>
 
 <div class="page">
-  <div class="section-label">Selected — 12 works</div>
+  <div class="section-label">Selected Works</div>
 
   <div class="masonry">
 
-    <!-- Col 1 items -->
+    <!-- LEFT COLUMN -->
     <div class="card">
       <img src="Selected/tomwood.jpeg" alt="Tom Wood" loading="lazy"/>
       <div class="cap"><b>Tom Wood</b><span>Jewellery — Spec Creative</span></div>
@@ -182,19 +172,54 @@
     </div>
 
     <div class="card">
-      <img src="Selected/nocco.png" alt="NOCCO" loading="lazy"/>
+      <img src="Selected/efva_attling.jpg" alt="Efva Attling" loading="lazy"/>
+      <div class="cap"><b>Efva Attling</b><span>Jewellery — Spec Creative</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/nocco_14.png" alt="NOCCO" loading="lazy"/>
       <div class="cap"><b>NOCCO</b><span>Beverage — Spec Creative</span></div>
     </div>
 
     <div class="card">
-      <img src="Selected/maria_nila.png" alt="Maria Nila" loading="lazy"/>
-      <div class="cap"><b>Maria Nila</b><span>AI Image</span></div>
+      <img src="Selected/redhead_8.png" alt="Red Head" loading="lazy"/>
+      <div class="cap"><b>Red Head</b><span>Food — Spec Creative</span></div>
     </div>
 
-    <!-- Col 2 items -->
     <div class="card">
       <img src="Selected/sachajuan.png" alt="Sachajuan" loading="lazy"/>
       <div class="cap"><b>Sachajuan</b><span>Hair Care — Spec Creative</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/loka.jpg" alt="LOKA" loading="lazy"/>
+      <div class="cap"><b>LOKA</b><span>Beverage — Spec Creative</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/soap.png" alt="Soap for Globe" loading="lazy"/>
+      <div class="cap"><b>Soap for Globe</b><span>Beauty — Spec Creative</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/maria_nila.png" alt="Maria Nila" loading="lazy"/>
+      <div class="cap"><b>Maria Nila</b><span>Hair Care — AI Image</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/revision_1.jpeg" alt="Revision Skincare" loading="lazy"/>
+      <div class="cap"><b>Revision Skincare</b><span>Skincare — Spec Creative</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/syster_s.png" alt="Syster S" loading="lazy"/>
+      <div class="cap"><b>Syster S</b><span>Fashion — Spec Creative</span></div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="card">
+      <img src="Selected/sachajuan_3.png" alt="Sachajuan" loading="lazy"/>
+      <div class="cap"><b>Sachajuan</b><span>Hair Care — AI Image</span></div>
     </div>
 
     <div class="card">
@@ -203,13 +228,18 @@
     </div>
 
     <div class="card">
+      <img src="Selected/evy_17.png" alt="EVY Tech" loading="lazy"/>
+      <div class="cap"><b>EVY Tech</b><span>AI Image</span></div>
+    </div>
+
+    <div class="card">
       <img src="Selected/revision.jpeg" alt="Revision Skincare" loading="lazy"/>
       <div class="cap"><b>Revision Skincare</b><span>Skincare — Spec Creative</span></div>
     </div>
 
     <div class="card">
-      <img src="Selected/evy_17.png" alt="EVY Tech" loading="lazy"/>
-      <div class="cap"><b>EVY Tech</b><span>AI Image</span></div>
+      <img src="Selected/caia_dinner.png" alt="CAIA" loading="lazy"/>
+      <div class="cap"><b>CAIA</b><span>AI Image</span></div>
     </div>
 
     <div class="card">
@@ -220,8 +250,35 @@
     </div>
 
     <div class="card">
-      <img src="Selected/caia_dinner.png" alt="CAIA" loading="lazy"/>
-      <div class="cap"><b>CAIA</b><span>AI Image</span></div>
+      <img src="Selected/nocco.png" alt="NOCCO" loading="lazy"/>
+      <div class="cap"><b>NOCCO</b><span>Beverage — Spec Creative</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/nocco_5.png" alt="NOCCO" loading="lazy"/>
+      <div class="cap"><b>NOCCO</b><span>Beverage — Spec Creative</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/redhead_10.png" alt="Red Head" loading="lazy"/>
+      <div class="cap"><b>Red Head</b><span>Food — Spec Creative</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/maria_nila_13.jpeg" alt="Maria Nila" loading="lazy"/>
+      <div class="cap"><b>Maria Nila</b><span>Hair Care — Spec Creative</span></div>
+    </div>
+
+    <div class="card">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/nojs_web.mp4" type="video/mp4"/>
+      </video>
+      <div class="cap"><b>Niactil</b><span>AI Video</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/revision.jpeg" alt="Revision Skincare" loading="lazy"/>
+      <div class="cap"><b>Revision Skincare</b><span>Skincare — AI Image</span></div>
     </div>
 
   </div>
