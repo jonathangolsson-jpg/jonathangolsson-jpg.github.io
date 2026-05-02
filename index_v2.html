@@ -59,8 +59,15 @@
     }
 
     .masonry {
-      columns: 2;
-      column-gap: 3px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      align-items: start;
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
 
     .card {
@@ -145,141 +152,110 @@
   <div class="section-label">Selected Works</div>
 
   <div class="masonry">
-
-    <!-- LEFT COLUMN -->
+    <div class="col">
+    <div class="card">
+      <img src="Selected/sachajuan_3.png" alt="Sachajuan" loading="lazy"/>
+      <div class="cap"><b>Sachajuan</b><span>Hair Care — AI Image</span></div>
+    </div>
     <div class="card">
       <img src="Selected/tomwood.jpeg" alt="Tom Wood" loading="lazy"/>
       <div class="cap"><b>Tom Wood</b><span>Jewellery — Spec Creative</span></div>
     </div>
-
     <div class="card">
       <video autoplay loop muted playsinline preload="auto">
         <source src="Selected/nilsdotter.mp4" type="video/mp4"/>
       </video>
       <div class="cap"><b>Maria Nilsdotter</b><span>AI Video</span></div>
     </div>
-
+    <div class="card">
+      <img src="Selected/efva_attling.jpg" alt="Efva Attling" loading="lazy"/>
+      <div class="cap"><b>Efva Attling</b><span>Jewellery — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/sachajuan.png" alt="Sachajuan" loading="lazy"/>
+      <div class="cap"><b>Sachajuan</b><span>Hair Care — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/nocco_14.png" alt="NOCCO" loading="lazy"/>
+      <div class="cap"><b>NOCCO</b><span>Beverage — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/soap.png" alt="Soap for Globe" loading="lazy"/>
+      <div class="cap"><b>Soap for Globe</b><span>Beauty — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/syster_s.png" alt="Syster S" loading="lazy"/>
+      <div class="cap"><b>Syster S</b><span>Fashion — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/revision_1.jpeg" alt="Revision Skincare" loading="lazy"/>
+      <div class="cap"><b>Revision Skincare</b><span>Skincare — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/redhead_8.png" alt="Red Head" loading="lazy"/>
+      <div class="cap"><b>Red Head</b><span>Food — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/maria_nila.png" alt="Maria Nila" loading="lazy"/>
+      <div class="cap"><b>Maria Nila</b><span>Hair Care — AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/loka.jpg" alt="LOKA" loading="lazy"/>
+      <div class="cap"><b>LOKA</b><span>Beverage — Spec Creative</span></div>
+    </div>
+    </div>
+    <div class="col">
     <div class="card">
       <video autoplay loop muted playsinline preload="auto">
         <source src="Selected/coelho_video.mp4" type="video/mp4"/>
       </video>
       <div class="cap"><b>Coelho</b><span>AI Video</span></div>
     </div>
-
-    <div class="card">
-      <img src="Selected/efva_attling.jpg" alt="Efva Attling" loading="lazy"/>
-      <div class="cap"><b>Efva Attling</b><span>Jewellery — Spec Creative</span></div>
-    </div>
-
-    <div class="card">
-      <img src="Selected/sachajuan.png" alt="Sachajuan" loading="lazy"/>
-      <div class="cap"><b>Sachajuan</b><span>Hair Care — Spec Creative</span></div>
-    </div>
-
-    <div class="card">
-      <img src="Selected/nocco_14.png" alt="NOCCO" loading="lazy"/>
-      <div class="cap"><b>NOCCO</b><span>Beverage — Spec Creative</span></div>
-    </div>
-
-
-
-    <div class="card">
-      <img src="Selected/soap.png" alt="Soap for Globe" loading="lazy"/>
-      <div class="cap"><b>Soap for Globe</b><span>Beauty — Spec Creative</span></div>
-    </div>
-
-    <div class="card">
-      <img src="Selected/syster_s.png" alt="Syster S" loading="lazy"/>
-      <div class="cap"><b>Syster S</b><span>Fashion — Spec Creative</span></div>
-    </div>
-
-
-    <div class="card">
-      <img src="Selected/revision_1.jpeg" alt="Revision Skincare" loading="lazy"/>
-      <div class="cap"><b>Revision Skincare</b><span>Skincare — Spec Creative</span></div>
-    </div>
-
-
-    <!-- RIGHT COLUMN -->
-    <div class="card">
-      <img src="Selected/sachajuan_3.png" alt="Sachajuan" loading="lazy"/>
-      <div class="cap"><b>Sachajuan</b><span>Hair Care — AI Image</span></div>
-    </div>
-
     <div class="card">
       <img src="Selected/pernille.jpeg" alt="Pernille Corydon" loading="lazy"/>
       <div class="cap"><b>Pernille Corydon</b><span>Jewellery — Spec Creative</span></div>
     </div>
-
     <div class="card">
       <img src="Selected/evy_17.png" alt="EVY Tech" loading="lazy"/>
       <div class="cap"><b>EVY Tech</b><span>AI Image</span></div>
     </div>
-
     <div class="card">
       <img src="Selected/revision.jpeg" alt="Revision Skincare" loading="lazy"/>
       <div class="cap"><b>Revision Skincare</b><span>Skincare — Spec Creative</span></div>
     </div>
-
     <div class="card">
       <img src="Selected/caia_dinner.png" alt="CAIA" loading="lazy"/>
       <div class="cap"><b>CAIA</b><span>AI Image</span></div>
     </div>
-
     <div class="card">
       <video autoplay loop muted playsinline preload="auto">
         <source src="Selected/caroline.mp4" type="video/mp4"/>
       </video>
       <div class="cap"><b>Caroline Svedbom</b><span>AI Video</span></div>
     </div>
-
     <div class="card">
       <img src="Selected/nocco.png" alt="NOCCO" loading="lazy"/>
       <div class="cap"><b>NOCCO</b><span>Beverage — Spec Creative</span></div>
     </div>
-
     <div class="card">
       <img src="Selected/nocco_5.png" alt="NOCCO" loading="lazy"/>
       <div class="cap"><b>NOCCO</b><span>Beverage — Spec Creative</span></div>
     </div>
-
     <div class="card">
       <video autoplay loop muted playsinline preload="auto">
         <source src="Selected/nojs_web.mp4" type="video/mp4"/>
       </video>
     </div>
-
-
-
-
-
-  </div>
-
-
-    <div class="card">
-      <img src="Selected/redhead_8.png" alt="Red Head" loading="lazy"/>
-      <div class="cap"><b>Red Head</b><span>Food — Spec Creative</span></div>
-    </div>
-
     <div class="card">
       <img src="Selected/redhead_10.png" alt="Red Head" loading="lazy"/>
       <div class="cap"><b>Red Head</b><span>Food — Spec Creative</span></div>
     </div>
-
-    <div class="card">
-      <img src="Selected/maria_nila.png" alt="Maria Nila" loading="lazy"/>
-      <div class="cap"><b>Maria Nila</b><span>Hair Care — AI Image</span></div>
-    </div>
-
     <div class="card">
       <img src="Selected/maria_nila_13.jpeg" alt="Maria Nila" loading="lazy"/>
       <div class="cap"><b>Maria Nila</b><span>Hair Care — Spec Creative</span></div>
     </div>
-
-    <div class="card">
-      <img src="Selected/loka.jpg" alt="LOKA" loading="lazy"/>
-      <div class="cap"><b>LOKA</b><span>Beverage — Spec Creative</span></div>
     </div>
+  </div>
 
   <footer>
     <span>Jonathan Olsson — AI Creative Production</span>
