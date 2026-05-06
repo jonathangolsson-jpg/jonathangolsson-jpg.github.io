@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jonathan Olsson — Selected Work</title>
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 48px;
+      background: rgba(26,26,26,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-name {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #fff; text-decoration: none;
+    }
+    nav ul { display:flex; gap:36px; list-style:none; }
+    nav ul a {
+      color: #555; text-decoration: none; font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase; transition: color .2s;
+    }
+    nav ul a:hover { color: #fff; }
+
+    .hero {
+      height: 100vh; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 0 48px 72px;
+    }
+    .hero small {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #555; display: block; margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(60px, 9vw, 108px); font-weight: 700;
+      line-height: 0.88; letter-spacing: -0.04em; color: #fff;
+      margin-bottom: 28px;
+    }
+    .hero-bar {
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 18px;
+      display: flex; gap: 36px; font-size: 10px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #555;
+    }
+
+    .section-label {
+      padding: 60px 0 28px;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #444; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .masonry {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3px;
+      align-items: start;
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .card {
+      break-inside: avoid;
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      margin-bottom: 3px;
+      display: block;
+    }
+
+    .card img, .card video {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .card:hover img, .card:hover video { transform: scale(1.025); }
+
+    .card.crop-916 { aspect-ratio: 9/16; }
+    .card.crop-916 img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+
+    .cap {
+      position: absolute; bottom:0; left:0; right:0;
+      padding: 48px 24px 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .card:hover .cap { opacity: 1; }
+    .cap b {
+      display: block; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase; color: #fff;
+    }
+    .cap span {
+      display: block; font-size: 9px; color: rgba(255,255,255,0.45);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px;
+    }
+
+    .page { padding: 0; }
+
+    footer {
+      padding: 36px 0; margin-top: 3px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer span, footer a {
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #444; text-decoration: none; transition: color .2s;
+    }
+    footer a:hover { color: #fff; }
+
+    video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure,
+    video::-webkit-media-controls-panel { display:none !important; }
+    video { pointer-events: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Jonathan Olsson</a>
+  <ul>
+    <li><a href="mailto:jonathangertolsson@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <small>Selected Work</small>
+  <h1>AI Content<br>Production</h1>
+  <div class="hero-bar">
+    <span>AI Image &amp; Video</span>
+    <span>Scandinavian Brands</span>
+    <span>Performance Creative</span>
+  </div>
+</section>
+
+<div class="page">
+  <div class="section-label">Selected Works</div>
+
+  <div class="masonry">
+    <div class="col">
+    <div class="card">
+      <img src="Selected/NOCCO_1.png" alt="NOCCO" loading="lazy"/>
+      <div class="cap"><b>NOCCO</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/caia_boat.png" alt="CAIA" loading="lazy"/>
+      <div class="cap"><b>CAIA</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/nilsdotter.mp4" type="video/mp4"/>
+      </video>
+      <div class="cap"><b>Maria Nilsdotter</b><span>AI Video</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/SIA GLASS2.png" alt="Sia Glass" loading="lazy"/>
+      <div class="cap"><b>Sia Glass</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/efva_attling.jpg" alt="Efva Attling" loading="lazy"/>
+      <div class="cap"><b>Efva Attling</b><span>Jewellery — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/sachajuan_6.png" alt="Sachajuan" loading="lazy"/>
+      <div class="cap"><b>Sachajuan</b><span>Hair Care — AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/TRIUMF glass_1.png" alt="Triumf Glass" loading="lazy"/>
+      <div class="cap"><b>Triumf Glass</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/revision_1.jpeg" alt="Revision Skincare" loading="lazy"/>
+      <div class="cap"><b>Revision Skincare</b><span>Skincare — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/lh_cosmetics.webp" alt="LH Cosmetics" loading="lazy"/>
+      <div class="cap"><b>LH Cosmetics</b><span>Beauty — AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/evy_17.png" alt="EVY Tech" loading="lazy"/>
+      <div class="cap"><b>EVY Tech</b><span>AI Image</span></div>
+    </div>
+    </div>
+    <div class="col">
+    <div class="card">
+      <img src="Selected/NOCCO_12.png" alt="NOCCO" loading="lazy"/>
+      <div class="cap"><b>NOCCO</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/sachajuan.png" alt="Sachajuan" loading="lazy"/>
+      <div class="cap"><b>Sachajuan</b><span>Hair Care — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/FROOSH_10.jpg" alt="Froosh" loading="lazy"/>
+      <div class="cap"><b>Froosh</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/keune_31.png" alt="Keune" loading="lazy"/>
+      <div class="cap"><b>Byena Beauty</b><span>Beauty — AI Image</span></div>
+    </div>
+    <div class="card">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/coelho_video.mp4" type="video/mp4"/>
+      </video>
+      <div class="cap"><b>Coelho</b><span>AI Video</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/Blåbärsvartvinbär.png" alt="Brämhult" loading="lazy"/>
+      <div class="cap"><b>Brämhult</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/sachajuan_3.png" alt="Sachajuan" loading="lazy"/>
+      <div class="cap"><b>Sachajuan</b><span>Hair Care — AI Image</span></div>
+    </div>
+    <div class="card">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/caroline.mp4" type="video/mp4"/>
+      </video>
+      <div class="cap"><b>Caroline Svedbom</b><span>AI Video</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/soap.png" alt="Soap for Globe" loading="lazy"/>
+      <div class="cap"><b>Soap for Globe</b><span>Beauty — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/loka.jpg" alt="LOKA" loading="lazy"/>
+      <div class="cap"><b>LOKA</b><span>Beverage — Spec Creative</span></div>
+    </div>
+    </div>
+    <div class="col">
+    <div class="card">
+      <img src="Selected/LÖFBERGS_6.png" alt="Löfbergs" loading="lazy"/>
+      <div class="cap"><b>Löfbergs</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/nojs_web.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="card">
+      <img src="Selected/RED HEAD_1.png" alt="Red Head" loading="lazy"/>
+      <div class="cap"><b>Red Head</b><span>AI Image</span></div>
+    </div>
+
+    <div class="card">
+      <img src="Selected/tomwood.jpeg" alt="Tom Wood" loading="lazy"/>
+      <div class="cap"><b>Tom Wood</b><span>Jewellery — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/caia_6.png" alt="CAIA" loading="lazy"/>
+      <div class="cap"><b>CAIA</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/RED HEAD_5.png" alt="Red Head" loading="lazy"/>
+      <div class="cap"><b>Red Head</b><span>AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/pernille.jpeg" alt="Pernille Corydon" loading="lazy"/>
+      <div class="cap"><b>Pernille Corydon</b><span>Jewellery — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/syster_s.png" alt="Syster S" loading="lazy"/>
+      <div class="cap"><b>Syster S</b><span>Fashion — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/revision.jpeg" alt="Revision Skincare" loading="lazy"/>
+      <div class="cap"><b>Revision Skincare</b><span>Skincare — Spec Creative</span></div>
+    </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Jonathan Olsson — AI Creative Production</span>
+    <a href="mailto:jonathangertolsson@gmail.com">jonathangertolsson@gmail.com</a>
+  </footer>
+</div>
+
+<script>
+  function playAll() {
+    document.querySelectorAll('video').forEach(function(v) {
+      v.muted = true;
+      v.play().catch(function(){});
+    });
+  }
+  document.addEventListener('DOMContentLoaded', playAll);
+  window.addEventListener('load', playAll);
+</script>
+
+</body>
+</html>
