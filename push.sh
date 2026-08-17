@@ -1,5 +1,5 @@
 #!/bin/bash
-REPO="/Users/jonathanolsson/Documents/ADSOME/DEPLOY"
+REPO="/Users/jonathanolsson/Olssons valv/ADSOME/DEPLOY"
 cd "$REPO"
 find "$REPO/.git" -name "*.lock" -delete 2>/dev/null
 git rm --cached Selected/cv_photo.png 2>/dev/null || true
