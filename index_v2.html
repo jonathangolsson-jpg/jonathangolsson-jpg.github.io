@@ -34,12 +34,25 @@
     nav ul a:hover { color: #fff; }
 
     .hero {
+      position: relative; overflow: hidden;
       height: 100vh; display: flex; flex-direction: column;
       justify-content: flex-end; padding: 0 48px 72px;
     }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+      display: block;
+    }
+    .hero-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.45) 45%, rgba(10,10,10,0.15) 100%);
+    }
+    .hero small, .hero h1, .hero-bar { position: relative; z-index: 1; }
     .hero small {
       font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: #555; display: block; margin-bottom: 16px;
+      color: #999; display: block; margin-bottom: 16px;
     }
     .hero h1 {
       font-size: clamp(60px, 9vw, 108px); font-weight: 700;
@@ -47,9 +60,9 @@
       margin-bottom: 28px;
     }
     .hero-bar {
-      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px;
       display: flex; gap: 36px; font-size: 10px;
-      letter-spacing: 0.12em; text-transform: uppercase; color: #555;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #999;
     }
 
     .section-label {
@@ -138,6 +151,7 @@
 </nav>
 
 <section class="hero">
+  <div class="hero-bg"><img src="Selected/sachajuan_cover_16x9.jpg" alt="Sachajuan"/></div>
   <small>Selected Work</small>
   <h1>AI Content<br>Production</h1>
   <div class="hero-bar">
@@ -190,6 +204,14 @@
       <img src="Selected/evy_17.png" alt="EVY Tech" loading="lazy"/>
       <div class="cap"><b>EVY Tech</b><span>AI Image</span></div>
     </div>
+    <div class="card">
+      <img src="Selected/evy_sunscreen.png" alt="EVY Tech" loading="lazy"/>
+      <div class="cap"><b>EVY Tech</b><span>Sun Care — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/evy_membrane.png" alt="EVY Tech" loading="lazy"/>
+      <div class="cap"><b>EVY Tech</b><span>Sun Care — Spec Creative</span></div>
+    </div>
     </div>
     <div class="col">
     <div class="card">
@@ -235,8 +257,16 @@
       <div class="cap"><b>LOKA</b><span>Beverage — Spec Creative</span></div>
     </div>
     <div class="card">
-      <img src="Selected/sachajuan.png" alt="Sachajuan" loading="lazy"/>
-      <div class="cap"><b>Sachajuan</b><span>Hair Care — Spec Creative</span></div>
+      <img src="Selected/by_veira_blowout_model.png" alt="By Veira" loading="lazy"/>
+      <div class="cap"><b>By Veira</b><span>Hair Care — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/by_veira_blowout_bottles.png" alt="By Veira" loading="lazy"/>
+      <div class="cap"><b>By Veira</b><span>Hair Care — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/by_veira_miracle_oil.png" alt="By Veira" loading="lazy"/>
+      <div class="cap"><b>By Veira</b><span>Hair Care — Spec Creative</span></div>
     </div>
     </div>
     <div class="col">
@@ -274,6 +304,10 @@
     <div class="card">
       <img src="Selected/tomwood.jpeg" alt="Tom Wood" loading="lazy"/>
       <div class="cap"><b>Tom Wood</b><span>Jewellery — Spec Creative</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/sns_skateboard.png" alt="SNS x New Balance 574" loading="lazy"/>
+      <div class="cap"><b>SNS x New Balance 574</b><span>Footwear — Spec Creative</span></div>
     </div>
     </div>
   </div>
