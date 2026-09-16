@@ -83,6 +83,24 @@
       gap: 3px;
     }
 
+    .feature-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3px;
+      height: clamp(320px, 34vw, 620px);
+      margin-bottom: 3px;
+    }
+    .feature-row .card {
+      margin-bottom: 0;
+      height: 100%;
+    }
+    .feature-row .card img,
+    .feature-row .card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .card {
       break-inside: avoid;
       position: relative;
@@ -180,10 +198,54 @@
       <img src="Selected/Vega_2.webp" alt="Efva Attling" loading="lazy"/>
       <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Image</span></div>
     </div>
+    </div>
+    <div class="col">
+    <div class="card">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/Maj_Video_1.mp4" type="video/mp4"/>
+      </video>
+      <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Video</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/sns_skateboard.png" alt="SNS x New Balance 574" loading="lazy"/>
+      <div class="cap"><b>SNS x New Balance 574</b><span>Footwear — AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/EFVA%20ATTLING_3.png" alt="Efva Attling" loading="lazy"/>
+      <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Image</span></div>
+    </div>
+    </div>
+    <div class="col">
+    <div class="card">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="Selected/coelho_video.mp4" type="video/mp4"/>
+      </video>
+      <div class="cap"><b>Coelho</b><span>AI Video</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/by_veira_miracle_oil.png" alt="By Veira" loading="lazy"/>
+      <div class="cap"><b>By Veira</b><span>Hair Care — AI Image</span></div>
+    </div>
+    <div class="card">
+      <img src="Selected/by_veira_blowout_bottles.png" alt="By Veira" loading="lazy"/>
+      <div class="cap"><b>By Veira</b><span>Hair Care — AI Image</span></div>
+    </div>
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="card">
+      <img src="Selected/sns_retro_goes_everywhere.jpg" alt="SNS x New Balance 574" loading="lazy"/>
+      <div class="cap"><b>SNS x New Balance 574</b><span>Footwear — AI Image</span></div>
+    </div>
     <div class="card">
       <img src="Selected/efva_attling_4.png" alt="Efva Attling" loading="lazy"/>
       <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Image</span></div>
     </div>
+  </div>
+
+  <div class="masonry">
+    <div class="col">
     <div class="card">
       <img src="Selected/sachajuan_6.png" alt="Sachajuan" loading="lazy"/>
       <div class="cap"><b>Sachajuan</b><span>Hair Care — AI Image</span></div>
@@ -208,26 +270,8 @@
       <img src="Selected/evy_sunscreen.png" alt="EVY Tech" loading="lazy"/>
       <div class="cap"><b>EVY Tech</b><span>Sun Care — AI Image</span></div>
     </div>
-    <div class="card">
-      <img src="Selected/evy_membrane.png" alt="EVY Tech" loading="lazy"/>
-      <div class="cap"><b>EVY Tech</b><span>Sun Care — AI Image</span></div>
-    </div>
     </div>
     <div class="col">
-    <div class="card">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="Selected/Maj_Video_1.mp4" type="video/mp4"/>
-      </video>
-      <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Video</span></div>
-    </div>
-    <div class="card">
-      <img src="Selected/sns_skateboard.png" alt="SNS x New Balance 574" loading="lazy"/>
-      <div class="cap"><b>SNS x New Balance 574</b><span>Footwear — AI Image</span></div>
-    </div>
-    <div class="card">
-      <img src="Selected/EFVA%20ATTLING_3.png" alt="Efva Attling" loading="lazy"/>
-      <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Image</span></div>
-    </div>
     <div class="card">
       <img src="Selected/Stilleben_2.webp" alt="Efva Attling" loading="lazy"/>
       <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Image</span></div>
@@ -255,26 +299,8 @@
       <img src="Selected/loka.jpg" alt="LOKA" loading="lazy"/>
       <div class="cap"><b>LOKA</b><span>Beverage — Spec Creative</span></div>
     </div>
-    <div class="card">
-      <img src="Selected/sns_retro_goes_everywhere.jpg" alt="SNS x New Balance 574" loading="lazy"/>
-      <div class="cap"><b>SNS x New Balance 574</b><span>Footwear — AI Image</span></div>
-    </div>
     </div>
     <div class="col">
-    <div class="card">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="Selected/coelho_video.mp4" type="video/mp4"/>
-      </video>
-      <div class="cap"><b>Coelho</b><span>AI Video</span></div>
-    </div>
-    <div class="card">
-      <img src="Selected/by_veira_miracle_oil.png" alt="By Veira" loading="lazy"/>
-      <div class="cap"><b>By Veira</b><span>Hair Care — AI Image</span></div>
-    </div>
-    <div class="card">
-      <img src="Selected/by_veira_blowout_bottles.png" alt="By Veira" loading="lazy"/>
-      <div class="cap"><b>By Veira</b><span>Hair Care — AI Image</span></div>
-    </div>
     <div class="card">
       <video autoplay loop muted playsinline preload="auto">
         <source src="Selected/Vega_Video_3.mp4" type="video/mp4"/>
