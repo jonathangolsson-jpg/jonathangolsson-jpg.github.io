@@ -94,6 +94,16 @@
       margin-bottom: 0;
       height: 100%;
     }
+    .feature-row .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      height: 100%;
+    }
+    .feature-row .stack .card {
+      flex: 1 1 0;
+      min-height: 0;
+    }
     .feature-row .card img,
     .feature-row .card video {
       width: 100%;
@@ -187,9 +197,17 @@
       <img src="Selected/sns_retro_goes_everywhere.jpg" alt="SNS x New Balance 574" loading="lazy"/>
       <div class="cap"><b>SNS x New Balance 574</b><span>Footwear — AI Image</span></div>
     </div>
-    <div class="card">
-      <img src="Selected/efva_attling_4.png" alt="Efva Attling" loading="lazy"/>
-      <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Image</span></div>
+    <div class="stack">
+      <div class="card">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="Selected/Vega_Video_3.mp4" type="video/mp4"/>
+        </video>
+        <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Video</span></div>
+      </div>
+      <div class="card">
+        <img src="Selected/Vega_2.webp" alt="Efva Attling" loading="lazy"/>
+        <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Image</span></div>
+      </div>
     </div>
   </div>
 
@@ -293,13 +311,7 @@
       <div class="cap"><b>By Veira</b><span>Hair Care — AI Image</span></div>
     </div>
     <div class="card">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="Selected/Vega_Video_3.mp4" type="video/mp4"/>
-      </video>
-      <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Video</span></div>
-    </div>
-    <div class="card">
-      <img src="Selected/Vega_2.webp" alt="Efva Attling" loading="lazy"/>
+      <img src="Selected/efva_attling_4.png" alt="Efva Attling" loading="lazy"/>
       <div class="cap"><b>Efva Attling</b><span>Jewellery — AI Image</span></div>
     </div>
     <div class="card">
