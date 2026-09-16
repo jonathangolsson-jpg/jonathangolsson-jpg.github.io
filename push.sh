@@ -6,5 +6,5 @@ git rm --cached Selected/cv_photo.png 2>/dev/null || true
 git rm --cached Selected/cv_photo.jpg 2>/dev/null || true
 git add -A
 git commit -m "${1:-Update portfolio}" 2>/dev/null || echo "Nothing to commit"
-git push origin HEAD:main
+git push origin HEAD:main HEAD:master
 echo "✓ Live on jonathangolsson-jpg.github.io"
