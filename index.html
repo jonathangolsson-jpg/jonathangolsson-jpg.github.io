@@ -1,639 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jonathan Olsson — Creative Strategist</title>
+  <title>JONA Studio — Selected Work</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#EAE6DF"/>
+  <meta name="description" content="JONA Studio by Jonathan Olsson — AI image and film for Nordic premium brands. The right product, the right label, believable light in every frame."/>
+  <meta property="og:title" content="JONA Studio — Selected Work"/>
+  <meta property="og:description" content="AI image and film for Nordic premium brands."/>
+  <meta property="og:type" content="website"/>
 
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-    :root {
-      --bg:     #2e2e2e;
-      --bg2:    #222222;
-      --text:   #ffffff;
-      --muted:  #999999;
-      --accent: #ffffff;
-      --accent2:#cccccc;
-      --border: rgba(255,255,255,0.12);
-      --white:  #ffffff;
-    }
-
-    html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: #1a1a1a;
+      color: #fff;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── hide ALL native video UI ── */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 48px;
+      background: rgba(26,26,26,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-name {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #fff; text-decoration: none;
+    }
+    nav ul { display:flex; gap:36px; list-style:none; }
+    nav ul a {
+      color: #555; text-decoration: none; font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase; transition: color .2s;
+    }
+    nav ul a:hover { color: #fff; }
+
+    .hero {
+      position: relative; overflow: hidden;
+      height: 100vh; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 0 48px 72px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+      display: block;
+    }
+    .hero-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.45) 45%, rgba(10,10,10,0.15) 100%);
+    }
+    .hero small, .hero h1, .hero-bar { position: relative; z-index: 1; }
+    .hero small {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #999; display: block; margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(60px, 9vw, 108px); font-weight: 700;
+      line-height: 0.88; letter-spacing: -0.04em; color: #fff;
+      margin-bottom: 28px;
+    }
+    .hero-bar {
+      border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px;
+      display: flex; gap: 36px; font-size: 10px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #999;
+    }
+
+    .section-label {
+      padding: 60px 0 28px;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #444; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .masonry {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3px;
+      align-items: start;
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3px;
+      height: clamp(320px, 34vw, 620px);
+      margin-bottom: 3px;
+    }
+    .feature-row .card {
+      margin-bottom: 0;
+      height: 100%;
+    }
+    .feature-row .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      height: 100%;
+    }
+    .feature-row .stack .card {
+      flex: 1 1 0;
+      min-height: 0;
+    }
+    .feature-row .card img,
+    .feature-row .card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card {
+      break-inside: avoid;
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      margin-bottom: 3px;
+      display: block;
+    }
+
+    .card img, .card video {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .card:hover img, .card:hover video { transform: scale(1.025); }
+
+    .card.crop-916 { aspect-ratio: 9/16; }
+    .card.crop-916 img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+
+    .cap {
+      position: absolute; bottom:0; left:0; right:0;
+      padding: 48px 24px 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .card:hover .cap { opacity: 1; }
+    .cap b {
+      display: block; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase; color: #fff;
+    }
+    .cap span {
+      display: block; font-size: 9px; color: rgba(255,255,255,0.45);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px;
+    }
+
+    .page { padding: 0; }
+
+    footer {
+      padding: 36px 0; margin-top: 3px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer span, footer a {
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #444; text-decoration: none; transition: color .2s;
+    }
+    footer a:hover { color: #fff; }
+
     video::-webkit-media-controls,
     video::-webkit-media-controls-enclosure,
     video::-webkit-media-controls-panel { display:none !important; }
     video { pointer-events: none; }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top:0; left:0; right:0; z-index:100;
-      display:flex; justify-content:space-between; align-items:center;
-      padding: 22px 48px;
-      background: rgba(46,46,46,0.95);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-name {
-      font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-      font-size:15px; font-weight:600;
-      letter-spacing:0.08em; text-transform:uppercase;
-      color:var(--white);
-    }
-    .nav-links { display:flex; gap:36px; list-style:none; }
-    .nav-links a {
-      color:var(--muted); text-decoration:none;
-      font-size:13px; letter-spacing:0.06em;
-      text-transform:uppercase; font-weight:500;
-      transition:color .2s;
-    }
-    .nav-links a:hover { color:var(--accent2); }
+    /* ===== Brand v1 (riktning D) — bara stil, strukturen är orörd ===== */
+    :root { --burgundy:#6E1F2A; --is:#CFDDE3; --mull:#4A3428; --linne:#D9CCB8; --off:#F5F0E8; --silver:#B9BDC2; }
+    body { background:var(--off); color:var(--mull); font-family:Inter, 'Helvetica Neue', Arial, sans-serif; }
+    nav { background:rgba(245,240,232,0.94); border-bottom:1px solid var(--linne); }
+    .nav-name { font-family:"Instrument Serif", Georgia, serif; font-size:22px; letter-spacing:0; text-transform:none; color:var(--burgundy); }
+    nav ul a { color:var(--mull); }
+    nav ul a:hover { color:var(--burgundy); }
+    .hero-bg::after { background:linear-gradient(to top, rgba(74,52,40,0.92) 0%, rgba(74,52,40,0.40) 45%, rgba(74,52,40,0.10) 100%); }
+    .hero small { color:var(--linne); }
+    .hero h1 { font-family:"Instrument Serif", Georgia, serif; font-weight:400; letter-spacing:-0.01em; line-height:0.95; color:var(--off); }
+    .hero-bar { border-top:1px solid rgba(185,189,194,0.6); color:var(--linne); }
+    .hero .pos { position:relative; z-index:1; max-width:560px; color:var(--off); font-size:17px; line-height:1.5; margin:-8px 0 28px; }
+    .section-label { color:var(--burgundy); border-top:1px solid var(--linne); font-weight:600; }
+    .section-label::after { content:""; display:block; width:96px; height:2px; margin-top:14px; background:linear-gradient(90deg,#8E949B 0%,#F4F5F6 38%,#B9BDC2 62%,#E9EBED 82%,#9EA3A9 100%); box-shadow:0 1px 0 rgba(255,255,255,.6); transform-origin:left; animation:silverdraw 1.1s cubic-bezier(.22,.61,.36,1) both; }
+    @keyframes silverdraw { from { transform:scaleX(0); opacity:0; } to { transform:scaleX(1); opacity:1; } }
 
-    /* ── HERO ── */
-    .hero {
-      min-height:100vh;
-      display:flex; flex-direction:column; justify-content:center;
-      padding: 140px 48px 80px;
-      position:relative; overflow:hidden;
-    }
-    .hero::before {
-      content:''; position:absolute; top:-200px; left:-200px;
-      width:700px; height:700px;
-      background:radial-gradient(circle,rgba(255,255,255,.03) 0%,transparent 70%);
-      pointer-events:none;
-    }
-    .hero-tag {
-      display:inline-flex; align-items:center; gap:10px;
-      font-size:11px; font-weight:500;
-      letter-spacing:0.14em; text-transform:uppercase;
-      color:var(--accent); margin-bottom:28px;
-    }
-    .hero-tag::before { content:''; width:28px; height:1px; background:var(--accent); }
-    h1 {
-      font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-      font-size:clamp(52px,8vw,96px);
-      font-weight:700; line-height:1.0;
-      letter-spacing:-0.03em; color:var(--white);
-      margin-bottom:12px;
-    }
-    h1 span { color:var(--accent2); }
-    .hero-subtitle {
-      font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-      font-size:clamp(17px,2.5vw,24px);
-      font-weight:300; color:var(--muted);
-      margin-bottom:32px; letter-spacing:-0.01em;
-    }
-    .hero-description {
-      max-width:520px; font-size:16px;
-      color:var(--muted); line-height:1.8; margin-bottom:48px;
-    }
-    .hero-cta {
-      display:inline-flex; align-items:center; gap:10px;
-      background:var(--white); color:#2e2e2e; text-decoration:none;
-      padding:14px 28px; font-size:13px; font-weight:600;
-      letter-spacing:0.06em; text-transform:uppercase;
-      border-radius:4px; width:fit-content;
-      transition:background .2s,transform .15s;
-    }
-    .hero-cta:hover { background:#cccccc; transform:translateY(-1px); }
-    .hero-stats {
-      display:flex; gap:56px;
-      margin-top:72px; padding-top:40px;
-      border-top:1px solid var(--border);
-    }
-    .stat-number {
-      font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-      font-size:36px; font-weight:700;
-      color:var(--white); letter-spacing:-0.02em;
-    }
-    .stat-number span { color:var(--accent2); }
-    .stat-label {
-      font-size:12px; color:var(--muted);
-      letter-spacing:0.08em; text-transform:uppercase; margin-top:4px;
-    }
-
-    /* ── SHARED SECTION ── */
-    section { padding:100px 48px; }
-    .section-tag {
-      display:block;
-      font-size:11px; font-weight:500;
-      letter-spacing:0.14em; text-transform:uppercase;
-      color:var(--accent); margin-bottom:12px;
-    }
-    h2 {
-      font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-      font-size:clamp(26px,3.5vw,40px);
-      font-weight:700; color:var(--white);
-      letter-spacing:-0.02em; margin-bottom:12px;
-    }
-    .section-description {
-      max-width:500px; font-size:14px;
-      color:var(--muted); line-height:1.75; margin-bottom:52px;
-    }
-
-    /* ── CARD BASE ── */
-    .card {
-      position:relative; overflow:hidden;
-      border-radius:8px; background:var(--bg2);
-      cursor:default;
-    }
-    /* images fill width, height is natural */
-    .card img { width:100%; height:auto; display:block; transition:transform .5s; }
-    .card video { width:100%; height:auto; display:block; transition:transform .5s; }
-    .card:hover img,
-    .card:hover video { transform:scale(1.02); }
-    .card-overlay {
-      position:absolute; bottom:0; left:0; right:0;
-      padding:20px 24px;
-      background:linear-gradient(to top,rgba(20,20,20,.92) 0%,transparent 100%);
-      opacity:0; transition:opacity .3s;
-    }
-    .card:hover .card-overlay { opacity:1; }
-    .card-brand {
-      font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-      font-size:13px; font-weight:600;
-      letter-spacing:0.08em; text-transform:uppercase; color:var(--white);
-    }
-    .card-type {
-      font-size:11px; color:var(--accent2);
-      letter-spacing:0.06em; text-transform:uppercase; margin-top:3px;
-    }
-
-    /* ── VYKORT GRID ── */
-    .vykort-grid {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-    .span-2 { grid-column:span 2; }
-
-    /* ── COLLAGE GRID (masonry-style columns) ── */
-    .collage-grid {
-      columns:3;
-      column-gap:12px;
-    }
-    .collage-grid .card {
-      break-inside:avoid;
-      margin-bottom:12px;
-    }
-
-    /* ── CLIENTS ── */
-    #clients {
-      background:var(--bg2);
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-    }
-    .clients-wrap { display:flex; flex-wrap:wrap; gap:8px; margin-top:32px; }
-    .client-tag {
-      font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
-      font-size:11px; font-weight:500;
-      letter-spacing:0.08em; text-transform:uppercase;
-      color:var(--muted); border:1px solid var(--border);
-      padding:6px 14px; border-radius:100px;
-      transition:color .2s,border-color .2s;
-    }
-    .client-tag:hover { color:var(--accent2); border-color:var(--accent); }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:80px; align-items:start;
-    }
-    .about-text p { font-size:15px; color:var(--muted); line-height:1.85; margin-bottom:18px; }
-    .tools-label {
-      font-size:11px; font-weight:500;
-      letter-spacing:0.14em; text-transform:uppercase;
-      color:var(--accent); margin:36px 0 14px;
-    }
-    .tools-wrap { display:flex; flex-wrap:wrap; gap:8px; }
-    .tool-pill {
-      font-size:12px; color:var(--muted);
-      padding:7px 14px; border:1px solid var(--border);
-      border-radius:100px; font-weight:500;
-    }
-    .service-card {
-      padding:22px 24px; border:1px solid var(--border);
-      border-radius:8px; background:var(--bg2); margin-bottom:14px;
-    }
-    .service-card-title {
-      color:var(--accent); font-size:11px;
-      letter-spacing:0.1em; text-transform:uppercase;
-      font-weight:600; margin-bottom:10px;
-    }
-    .service-card p { color:var(--muted); font-size:13px; line-height:1.7; }
-
-    /* ── CONTACT ── */
-    #contact {
-      background:var(--bg2);
-      border-top:1px solid var(--border);
-      text-align:center;
-    }
-    #contact p { color:var(--muted); margin-bottom:36px; font-size:15px; }
-    .contact-links { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
-    .contact-btn {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:13px 28px; font-size:13px; font-weight:600;
-      letter-spacing:0.06em; text-transform:uppercase;
-      border-radius:4px; text-decoration:none; transition:all .2s;
-    }
-    .contact-btn.primary { background:var(--accent); color:#fff; }
-    .contact-btn.primary:hover { background:var(--accent2); transform:translateY(-1px); }
-    .contact-btn.secondary { border:1px solid var(--border); color:var(--muted); }
-    .contact-btn.secondary:hover { border-color:var(--accent); color:var(--accent2); }
-
-    /* ── FOOTER ── */
-    footer {
-      padding:28px 48px;
-      display:flex; justify-content:space-between; align-items:center;
-      border-top:1px solid var(--border);
-    }
-    footer p { font-size:12px; color:var(--muted); }
+    /* Galleriluft: mer offwhite mellan bilderna så att mörka bilder ser inramade ut */
+    .page { padding:0 32px; }
+    .masonry, .col, .feature-row, .feature-row .stack { gap:14px; }
+    .feature-row, .card { margin-bottom:14px; }
+    .card { border-radius:2px; }
+    /* Hover: silverton nedifrån, tät nog att texten syns även på mörka bilder */
+    .cap { padding:56px 24px 18px; background:linear-gradient(to top, rgba(205,209,213,0.96) 0%, rgba(205,209,213,0.80) 35%, rgba(228,230,232,0) 100%); }
+    .cap b { color:#1a1a1a; }
+    .cap span { color:#4a4d52; }
+    footer { border-top:1px solid var(--linne); }
+    footer span, footer a { color:var(--mull); }
+    footer a:hover { color:var(--burgundy); }
   </style>
+
+<style>
+  .folders { columns:3; column-gap:14px; }
+  .folder { display:block; break-inside:avoid; margin-bottom:14px; position:relative; overflow:hidden; border-radius:2px; cursor:pointer; }
+  .folder img, .folder video { width:100%; display:block; transition:transform .8s cubic-bezier(.25,.46,.45,.94); }
+  .folder:hover img, .folder:hover video { transform:scale(1.025); }
+  .folder .cap { opacity:0; transition:opacity .3s; }
+  .folder:hover .cap { opacity:1; }
+  .tag { position:absolute; top:12px; left:12px; z-index:3; font-size:9px; letter-spacing:.16em; text-transform:uppercase; padding:5px 9px; border-radius:20px; background:rgba(245,240,232,.88); color:var(--mull); backdrop-filter:blur(6px); }
+  .tag-client { background:rgba(110,31,42,.92); color:var(--off); }
+  .tag-case,.tag-pitch { background:rgba(205,209,213,.92); color:#1a1a1a; }
+  /* Galleri */
+  .lb { position:fixed; inset:0; z-index:200; background:rgba(245,240,232,.98); display:none; flex-direction:column; }
+  .lb.open { display:flex; }
+  .lb-top { display:flex; justify-content:space-between; align-items:flex-end; padding:22px 48px 18px; border-bottom:1px solid var(--linne); }
+  .lb-top h3 { font-family:"Instrument Serif",Georgia,serif; font-weight:400; font-size:34px; color:var(--burgundy); line-height:1; }
+  .lb-top small { display:block; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--mull); margin-bottom:8px; }
+  .lb-top .acts { display:flex; gap:18px; align-items:center; }
+  .lb-top a, .lb-top button { font:inherit; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--burgundy); background:none; border:0; cursor:pointer; text-decoration:none; }
+  .lb-body { flex:1; overflow:auto; padding:20px 40px 40px; }
+  .lb-grid { columns:4; column-gap:10px; }
+  .lb-grid figure { break-inside:avoid; margin-bottom:10px; position:relative; }
+  .lb-grid img, .lb-grid video { width:100%; display:block; border-radius:2px; }
+  .lb-grid .tag { top:10px; left:10px; }
+  @media (max-width:1300px){ .lb-grid{columns:3} }
+  @media (max-width:900px){ .lb-grid{columns:2} }
+  @media (max-width:800px){ .folders{columns:2} .lb-grid{columns:2} .lb-top,.lb-body{padding-left:16px;padding-right:16px} }
+
+  /* Typsnitt F: Inter versaler */
+  .nav-name{font-family:Inter,'Helvetica Neue',Arial,sans-serif!important;font-weight:600!important;font-size:13px!important;letter-spacing:.22em!important;text-transform:uppercase!important}
+  .hero h1{font-family:Inter,'Helvetica Neue',Arial,sans-serif!important;font-weight:600!important;text-transform:uppercase;letter-spacing:.12em!important;line-height:1.05!important}
+  .lb-top h3{font-family:Inter,'Helvetica Neue',Arial,sans-serif!important;font-weight:600!important;text-transform:uppercase;letter-spacing:.16em;font-size:22px!important}
+</style>
+
+<style id="brand-v2">
+  /* JONA Studio brand v2 (JONA BRAND ID 2026-10-25): burgundy #2E060E, kokos #EAE6DF, vitt, svart. Montserrat. */
+  :root{--burgundy:#2E060E;--off:#EAE6DF;--mull:#2E060E;--linne:rgba(46,6,14,.18);--silver:rgba(46,6,14,.35);--is:#FFFFFF}
+  body{font-family:Montserrat,Arial,sans-serif!important;background:var(--off);color:var(--burgundy)}
+  nav{background:rgba(234,230,223,.95)!important}
+  .hero-bg::after{background:linear-gradient(to top, rgba(46,6,14,.94) 0%, rgba(46,6,14,.45) 45%, rgba(46,6,14,.10) 100%)!important}
+  .hero h1,.lb-top h3,.section-label,.nav-name{font-family:Montserrat,Arial,sans-serif!important}
+  .hero h1{font-weight:800!important;letter-spacing:.06em!important}
+  .hero small,.hero-bar{color:var(--off)!important}
+  .section-label{color:var(--burgundy)!important;font-weight:700}
+  .section-label::after{background:var(--burgundy)!important;box-shadow:none!important;height:2px!important}
+  .cap{background:linear-gradient(to top, rgba(46,6,14,.92) 0%, rgba(46,6,14,.6) 40%, rgba(46,6,14,0) 100%)!important}
+  .cap b{color:var(--off)!important}.cap span{color:rgba(234,230,223,.75)!important}
+  .tag{background:rgba(234,230,223,.92)!important;color:var(--burgundy)!important}
+  .tag-client{background:var(--burgundy)!important;color:var(--off)!important}
+  .tag-case,.tag-pitch{background:#FFFFFF!important;color:var(--burgundy)!important}
+  .lb{background:rgba(234,230,223,.98)!important}
+
+  /* Serier + sömlösa rader */
+  .lb-grid{columns:auto!important;display:block}
+  .lb-grid .ser{margin-bottom:46px}
+  .lb-grid .ser h4{font-family:Montserrat,Arial,sans-serif;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--burgundy);margin:0 0 14px}
+  .lb-grid .row{display:block}
+  .lb-grid .row .ln{display:flex;gap:10px;justify-content:center;margin-bottom:10px}
+  .lb{background:var(--off)!important}
+  .lb-grid figure{margin:0!important;position:relative;overflow:hidden;border-radius:2px;flex:none}
+  .lb-grid figure img,.lb-grid figure video{width:100%!important;height:100%!important;object-fit:cover;display:block}
+  /* Mapparna: jämna rutor i samma format */
+  .folders{columns:auto!important;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .folder{margin:0!important;aspect-ratio:4/5}
+  .folder img,.folder video{width:100%;height:100%!important;object-fit:cover}
+  @media (max-width:800px){.folders{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <span class="nav-name">Jonathan Olsson</span>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#archive">Archive</a></li>
-    <li><a href="#clients">Clients</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <a href="index.html" class="nav-name" id="home" aria-label="JONA Studio"><img src="img/jona-studio_wordmark.svg" alt="JONA Studio" style="height:46px;display:block"></a>
+  <ul>
+    <li><a href="#work" id="worklink">Work</a></li>
+    <li><a href="mailto:jonathangertolsson@gmail.com">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-tag">Creative Strategist &amp; AI Ad Producer</div>
-  <h1>Jonathan<br><span>Olsson</span></h1>
-  <p class="hero-subtitle">Stockholm — AI-Driven Creative Production</p>
-  <p class="hero-description">
-    I build performance ad creatives for DTC brands — using AI to go from brief to finished asset in hours, not weeks. Specialising in brand-consistent visual production across image and video.
-  </p>
-  <a href="#work" class="hero-cta">View Work ↓</a>
-  <div class="hero-stats">
-    <div>
-      <div class="stat-number">100<span>+</span></div>
-      <div class="stat-label">Brands engaged</div>
-    </div>
-    <div>
-      <div class="stat-number">30<span>+</span></div>
-      <div class="stat-label">Active clients</div>
-    </div>
-    <div>
-      <div class="stat-number">750<span>+</span></div>
-      <div class="stat-label">Assets produced</div>
-    </div>
+  <div class="hero-bg"><img src="img/sel__sachajuan_cover_16x9.jpg" alt="Sachajuan"/></div>
+  <small>Selected Work</small>
+  <h1>AI Content<br>Production</h1>
+  <p class="pos">AI image and film for Nordic premium brands. The right product, the right label, believable light in every frame.</p>
+  <div class="hero-bar">
+    <span>AI Image &amp; Video</span>
+    <span>Scandinavian Brands</span>
+    <span>Performance Creative</span>
   </div>
 </section>
 
-<!-- WORK — VYKORT -->
-<section id="work">
-  <span class="section-tag">New Business</span>
-  <h2>Creative Direction</h2>
-  <p class="section-description">Brand-specific creative proposals developed for Scandinavian brands — each built from scratch using AI production to visualize what a collaboration could look like, before a contract is signed.</p>
-
-  <div class="vykort-grid">
-
-    <div class="card span-2">
-      <img src="Vykort/Vykort - EFVA ATTLING (1).png" alt="Efva Attling" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Efva Attling</div><div class="card-type">Jewellery — Spec Creative</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Vykort/Vykort - TOMWOOD.png" alt="Tom Wood" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Tom Wood</div><div class="card-type">Jewellery — Spec Creative</div></div>
-    </div>
-    <div class="card">
-      <img src="Vykort/Vykort - SACHAJUAN.png" alt="Sachajuan" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Sachajuan</div><div class="card-type">Hair Care — Spec Creative</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Vykort/Vykort - NOCCO.png" alt="NOCCO" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">NOCCO</div><div class="card-type">Beverage — Spec Creative</div></div>
-    </div>
-    <div class="card">
-      <img src="Vykort/Vykort - REVISION SKINCARE.png" alt="Revision Skincare" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Revision Skincare</div><div class="card-type">Skincare — Spec Creative</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Vykort/Vykort - BJÖRN AXÉN.png" alt="Björn Axén" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Björn Axén</div><div class="card-type">Hair Care — Spec Creative</div></div>
-    </div>
-    <div class="card">
-      <img src="Vykort/Vykort - Evy Tech.png" alt="Evy Tech" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Evy Tech</div><div class="card-type">Wellness — Spec Creative</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Vykort/Vykort - JULIE SANDLAU.png" alt="Julie Sandlau" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Julie Sandlau</div><div class="card-type">Jewellery — Spec Creative</div></div>
-    </div>
-    <div class="card">
-      <img src="Vykort/Vykort - PERNILLA CORYDON.png" alt="Pernilla Corydon" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Pernilla Corydon</div><div class="card-type">Jewellery — Spec Creative</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Vykort/Vykort - Maria Nila.png" alt="Maria Nila" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Maria Nila</div><div class="card-type">Hair Care — Spec Creative</div></div>
-    </div>
-    <div class="card">
-      <img src="Vykort/Vykort - IDA WARG.png" alt="Ida Warg" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Ida Warg</div><div class="card-type">Beauty — Spec Creative</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Vykort/Vykort - FROOSH.png" alt="Froosh" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Froosh</div><div class="card-type">Beverage — Spec Creative</div></div>
-    </div>
-    <div class="card">
-      <img src="Vykort/Vykort - LÖFBERGS.png" alt="Löfbergs" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Löfbergs</div><div class="card-type">Coffee — Spec Creative</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Vykort/Vykort - CAIA.png" alt="CAIA" loading="lazy"
-        onerror="this.closest('.card').style.display='none'"/>
-      <div class="card-overlay"><div class="card-brand">CAIA</div><div class="card-type">Beauty — Spec Creative</div></div>
-    </div>
-
+<div class="page">
+  <div class="section-label" id="work">Selected Works</div>
+  <div class="folders">
+    <a class="folder" href="#" data-i="0">
+      <img src="img/case-sns-574__img__00_cafe_landscape_web.jpg" alt="" loading="lazy"/>
+      <span class="tag tag-case">Case</span>
+      <div class="cap"><b>SNS × New Balance 574</b><span>Footwear — Image · Case study</span></div>
+    </a>
+    <a class="folder" href="#" data-i="1">
+      <video src="img/sel__Maj_Video_1.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <span class="tag tag-client">Client</span>
+      <div class="cap"><b>Efva Attling</b><span>Jewellery — Image & Film · 17 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="2">
+      <video src="img/sel__coelho_video.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Coelho</b><span>Skincare — Image & Film · 12 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="3">
+      <img src="img/sel__evy_17.png" alt="" loading="lazy"/>
+      <span class="tag tag-client">Client</span>
+      <div class="cap"><b>EVY Technology</b><span>Sun Care — Image & Film · 17 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="4">
+      <img src="img/sel__caia_boat.png" alt="" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>CAIA</b><span>Eyewear — Image · 11 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="5">
+      <img src="img/by-veira__img__ByVeira_MiracleHairOil_Model_01_web.jpg" alt="" loading="lazy"/>
+      <span class="tag tag-client">Client</span>
+      <div class="cap"><b>By Veira</b><span>Hair Care — Image · 18 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="6">
+      <video src="img/sel__nilsdotter.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Maria Nilsdotter</b><span>Jewellery — Film · 1 work</span></div>
+    </a>
+    <a class="folder" href="#" data-i="7">
+      <img src="img/sel__sachajuan_6.png" alt="" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Sachajuan</b><span>Hair Care — Image & Film · 10 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="8">
+      <img src="img/sel__lh_cosmetics.webp" alt="" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>LH Cosmetics</b><span>Beauty — Image · 8 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="9">
+      <video src="img/sel__caroline.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Caroline Svedbom</b><span>Jewellery — Film · 1 work</span></div>
+    </a>
+    <a class="folder" href="#" data-i="10">
+      <img src="img/sel__revision.jpeg" alt="" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Revision Skincare</b><span>Skincare — Image · 9 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="11">
+      <img src="img/sel__tomwood.jpeg" alt="" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Tom Wood</b><span>Jewellery — Image · 8 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="12">
+      <img src="img/sel__keune_31.png" alt="" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Byena Beauty</b><span>Beauty — Image & Film · 17 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="13">
+      <img src="img/sel__pernille.jpeg" alt="" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Pernille Corydon</b><span>Jewellery — Image · 9 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="14">
+      <img src="img/galleri__bjorn_axen__bjorn_axen_02.jpg" alt="" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Björn Axén</b><span>Hair Care — Image · 7 works</span></div>
+    </a>
+    <a class="folder" href="#" data-i="15">
+      <img src="img/galleri__pilgrim__pilgrim_06.jpg" alt="" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Pilgrim</b><span>Jewellery — Image · 9 works</span></div>
+    </a>
   </div>
-</section>
+  <footer>
+    <span>JONA Studio — AI-powered creative production</span>
+    <a href="mailto:jonathangertolsson@gmail.com">jonathangertolsson@gmail.com</a>
+  </footer>
+</div>
 
-<!-- ARCHIVE — COLLAGE -->
-<section id="archive">
-  <span class="section-tag">From the Archive</span>
-  <h2>Selected Works</h2>
-  <p class="section-description">A mix of AI-produced imagery, motion and video — production-ready assets across beauty, lifestyle and jewellery.</p>
-
-  <div class="collage-grid">
-
-    <div class="card">
-      <img src="Kollektioner/Tatararazors_6.png" alt="Tatararazors" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Tatararazors</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="Kollektioner/COELHO_4.mp4" type="video/mp4"/>
-      </video>
-      <div class="card-overlay"><div class="card-brand">Coelho</div><div class="card-type">AI Video</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/CAIA_12.png" alt="CAIA" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">CAIA</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/KEUNE_31.png" alt="Keune" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Keune</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/LH COSMETICS_4.png" alt="LH Cosmetics" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">LH Cosmetics</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/ANNI LU_1.png" alt="Anni Lu" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Anni Lu</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/LÖFBERGS_6.png" alt="Löfbergs" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Löfbergs</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/RITUALS_7.png" alt="Rituals" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Rituals</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/ANNI LU_9.png" alt="Anni Lu" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Anni Lu</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/SOAPforGLOBE_15.png" alt="Soap for Globe" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Soap for Globe</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/CAIA_13.png" alt="CAIA" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">CAIA</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="Kollektioner/KEUNE_36.mov" type="video/mp4"/>
-      </video>
-      <div class="card-overlay"><div class="card-brand">Keune</div><div class="card-type">AI Video</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/Eveleum_7.png" alt="Eveleum" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Eveleum</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="Kollektioner/CARLOINE SVEDBERG_1.mov" type="video/mp4"/>
-      </video>
-      <div class="card-overlay"><div class="card-brand">Caroline Svedbom</div><div class="card-type">AI Video</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/EMMA S_3.png" alt="Emma S" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Emma S</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/KEUNECARE_1.png" alt="Keune Care" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Keune Care</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/COELHO_11.png" alt="Coelho" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Coelho</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/TRIUMF glass_8.png" alt="Triumf Glass" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Triumf Glass</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="Kollektioner/MARIA NILSDOTTER_3.m4v" type="video/mp4"/>
-      </video>
-      <div class="card-overlay"><div class="card-brand">Maria Nilsdotter</div><div class="card-type">AI Video</div></div>
-    </div>
-
-
-    <div class="card">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="Kollektioner/Facecream.mp4" type="video/mp4"/>
-      </video>
-      <div class="card-overlay"><div class="card-brand">Natchi Beauty</div><div class="card-type">AI Video</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/LOKA_2.jpg" alt="LOKA" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">LOKA</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="Kollektioner/COELHO_27.mp4" type="video/mp4"/>
-      </video>
-      <div class="card-overlay"><div class="card-brand">Coelho</div><div class="card-type">AI Video</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/TRIUMF glass_8.png" alt="Triumf Glass" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Triumf Glass</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/SIA GLASS6.png" alt="Sia Glass" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Sia Glass</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/SIA GLASS7.png" alt="Sia Glass" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Sia Glass</div><div class="card-type">AI Image</div></div>
-    </div>
-
-    <div class="card">
-      <img src="Kollektioner/LASH THERAPY_6.jpeg" alt="Lash Therapy" loading="lazy"/>
-      <div class="card-overlay"><div class="card-brand">Lash Therapy</div><div class="card-type">AI Image</div></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CLIENTS -->
-<section id="clients">
-  <span class="section-tag">Portfolio</span>
-  <h2>Brands Worked With</h2>
-  <div class="clients-wrap">
-    <span class="client-tag">Maria Nila</span>
-    <span class="client-tag">Efva Attling</span>
-    <span class="client-tag">Tom Wood</span>
-    <span class="client-tag">Urban Decay</span>
-    <span class="client-tag">Sachajuan</span>
-    <span class="client-tag">Verso Skincare</span>
-    <span class="client-tag">NOCCO</span>
-    <span class="client-tag">Rituals</span>
-    <span class="client-tag">Lernberger Stafsing</span>
-    <span class="client-tag">Revision Skincare</span>
-    <span class="client-tag">Björn Axén</span>
-    <span class="client-tag">Julie Sandlau</span>
-    <span class="client-tag">Pernille Corydon</span>
-    <span class="client-tag">Ida Warg</span>
-    <span class="client-tag">Triumf Glass</span>
-    <span class="client-tag">Sia Glass</span>
-    <span class="client-tag">Löfbergs</span>
-    <span class="client-tag">Björk och Berries</span>
-    <span class="client-tag">Anni Lu</span>
-    <span class="client-tag">CAIA</span>
-    <span class="client-tag">Caroline Svedbom</span>
-    <span class="client-tag">Art Deco</span>
-    <span class="client-tag">Natchi Beauty</span>
-    <span class="client-tag">Froosh</span>
-    <span class="client-tag">LOKA</span>
-    <span class="client-tag">Cocosolis</span>
-    <span class="client-tag">Keune</span>
-    <span class="client-tag">Coelho</span>
-    <span class="client-tag">Malmöchokladfabrik</span>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-text">
-      <span class="section-tag">About</span>
-      <h2>Creative tech<br>meets strategy</h2>
-      <p>I'm a Creative Strategist based in Stockholm, currently working at Adsome Film — a digital production studio replacing traditional ad production with AI-driven workflows.</p>
-      <p>My work spans the full pipeline: brand analysis, creative brief, prompt engineering, image and video generation, layout, and client delivery. I've produced assets for 30+ brands across beauty, lifestyle, food &amp; beverage, and jewellery.</p>
-      <p>Background in enterprise IT and music production — I bring systems thinking and a trained creative eye to everything I build.</p>
-      <div class="tools-label">Tool Stack</div>
-      <div class="tools-wrap">
-        <span class="tool-pill">Higgsfield</span>
-        <span class="tool-pill">Nanobanan Pro</span>
-        <span class="tool-pill">Kling 2.5 / 3.0</span>
-        <span class="tool-pill">Runway</span>
-        <span class="tool-pill">Claude Cowork</span>
-        <span class="tool-pill">Canva</span>
-        <span class="tool-pill">Adobe Photoshop</span>
-        <span class="tool-pill">Meta Ads Manager</span>
-        <span class="tool-pill">Gemini</span>
-      </div>
-    </div>
-    <div>
-      <span class="section-tag" style="margin-bottom:20px;">What I do</span>
-      <div class="service-card">
-        <div class="service-card-title">AI Creative Production</div>
-        <p>End-to-end production of performance ad creatives — from product brief to final deliverable using generative AI tools.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card-title">Brand Strategy</div>
-        <p>Brand DNA analysis, creative brief development, and hook intelligence — translating brand identity into scroll-stopping visuals.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card-title">New Business Creative</div>
-        <p>Bespoke creative proposals developed for prospective clients — demonstrating creative vision through AI production to convert prospects into retained partnerships.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <span class="section-tag" style="margin-bottom:14px;">Get in touch</span>
-  <h2 style="margin-bottom:14px;">Let's work together</h2>
-  <p>Open to Creative Strategist, AI Producer and Performance Creative roles in Stockholm.</p>
-  <div class="contact-links">
-    <a href="mailto:jonathangertolsson@gmail.com" class="contact-btn primary">jonathangertolsson@gmail.com</a>
-    <a href="https://linkedin.com/in/jonathanolsson" class="contact-btn secondary">LinkedIn →</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Jonathan Olsson</p>
-  <p>Creative Strategist &amp; AI Ad Producer — Stockholm</p>
-</footer>
-
+<div class="lb" id="lb"><div class="lb-top"><div><small id="lbcat"></small><h3 id="lbname"></h3></div><div class="acts"><a id="lbcase" href="#">View case →</a><button id="lbx">Close ✕</button></div></div><div class="lb-body"><div class="lb-grid" id="lbgrid"></div></div></div>
 <script>
-  // Force autoplay on all videos as soon as the page is ready
-  function playAll() {
-    document.querySelectorAll('video').forEach(function(v) {
-      v.muted = true;
-      v.play().catch(function(){});
-    });
-  }
-  document.addEventListener('DOMContentLoaded', playAll);
-  window.addEventListener('load', playAll);
-</script>
+const D=[{"name": "SNS × New Balance 574", "items": [{"src": "img/case-sns-574__img__00_cafe_landscape_web.jpg", "tag": "Case", "s": "Case", "a": 1.7926}, {"src": "img/sel__sns_skateboard.png", "tag": "Case", "s": "Case", "a": 0.5625}, {"src": "img/sel__sns_retro_goes_everywhere.jpg", "tag": "Case", "s": "Case", "a": 1.7778}], "cat": "Footwear", "link": "case-sns-574/index.html"}, {"name": "Efva Attling", "items": [{"src": "img/sel__Maj_Video_1.mp4", "tag": "Client", "s": "Maj", "a": 1.7778}, {"src": "img/sel__Maj_3.webp", "tag": "Client", "s": "Maj", "a": 1.7917}, {"src": "img/galleri__efva_attling__maj_1.jpg", "tag": "Client", "s": "Maj", "a": 1.7769}, {"src": "img/galleri__efva_attling__maj_4.jpg", "tag": "Client", "s": "Maj", "a": 1.791}, {"src": "img/sel__Vega_Video_3.mp4", "tag": "Client", "s": "Vega", "a": 1.7778}, {"src": "img/sel__Vega_2.webp", "tag": "Client", "s": "Vega", "a": 1.7917}, {"src": "img/galleri__efva_attling__vega_1.jpg", "tag": "Client", "s": "Vega", "a": 1.791}, {"src": "img/galleri__efva_attling__vega_5.jpg", "tag": "Client", "s": "Vega", "a": 1.7769}, {"src": "img/sel__Stilleben_2.webp", "tag": "Client", "s": "Stilleben", "a": 1.7917}, {"src": "img/sel__efva_attling_4.png", "tag": "Client", "s": "Stilleben", "a": 1.7924}, {"src": "img/galleri__efva_attling__stilleben_1.jpg", "tag": "Client", "s": "Stilleben", "a": 1.791}, {"src": "img/galleri__efva_attling__stilleben_4.jpg", "tag": "Client", "s": "Stilleben", "a": 1.791}, {"src": "img/galleri__efva_attling__stilleben_5.jpg", "tag": "Client", "s": "Stilleben", "a": 1.791}, {"src": "img/galleri__efva_attling__vega_3.jpg", "tag": "Client", "s": "Riviera", "a": 1.791}, {"src": "img/galleri__efva_attling__maj_5.jpg", "tag": "Client", "s": "Riviera", "a": 1.7928}, {"src": "img/sel__EFVA ATTLING_3.png", "tag": "Spec", "s": "Spec", "a": 0.8056}], "cat": "Jewellery", "link": null}, {"name": "Coelho", "items": [{"src": "img/sel__coelho_video.mp4", "tag": "Spec", "s": "Surreal", "a": 0.7476}, {"src": "img/galleri__coelho__coelho_23.jpg", "tag": "Spec", "s": "Surreal", "a": 0.7455}, {"src": "img/galleri__coelho__coelho_24.jpg", "tag": "Spec", "s": "Surreal", "a": 0.749}, {"src": "img/galleri__coelho__coelho_12.jpg", "tag": "Spec", "s": "Model", "a": 0.7475}, {"src": "img/galleri__coelho__coelho_add04.jpg", "tag": "Spec", "s": "Model", "a": 0.7461}, {"src": "img/galleri__coelho__coelho_06.jpg", "tag": "Spec", "s": "Model", "a": 0.7465}, {"src": "img/galleri__coelho__coelho_16.mp4", "tag": "Spec", "s": "Model", "a": 0.7476}, {"src": "img/galleri__coelho__coelho_add01.jpg", "tag": "Spec", "s": "Model", "a": 0.7467}, {"src": "img/galleri__coelho__coelho_03.jpg", "tag": "Spec", "s": "Product", "a": 0.74}, {"src": "img/galleri__coelho__coelho_add02.jpg", "tag": "Spec", "s": "Product", "a": 1.0369}, {"src": "img/galleri__coelho__coelho_add03.jpg", "tag": "Spec", "s": "Product", "a": 0.7467}, {"src": "img/galleri__coelho__coelho_add05.jpg", "tag": "Spec", "s": "Product", "a": 0.7467}], "cat": "Skincare", "link": null}, {"name": "EVY Technology", "items": [{"src": "img/sel__evy_17.png", "tag": "Client", "s": "Campaign", "a": 0.8056}, {"src": "img/sel__evy_sunscreen.png", "tag": "Client", "s": "Campaign", "a": 0.5581}, {"src": "img/galleri__evy__evy_03.jpg", "tag": "Spec", "s": "Studio", "a": 0.8055}, {"src": "img/galleri__evy__evy_17.jpg", "tag": "Spec", "s": "Studio", "a": 0.8055}, {"src": "img/galleri__evy__evy_add01.jpg", "tag": "Spec", "s": "Studio", "a": 0.8056}, {"src": "img/galleri__evy__evy_add02.jpg", "tag": "Spec", "s": "Studio", "a": 0.8056}, {"src": "img/galleri__evy__evy_add03.jpg", "tag": "Spec", "s": "Studio", "a": 0.8056}, {"src": "img/galleri__evy__evy_add05.jpg", "tag": "Spec", "s": "Studio", "a": 0.8056}, {"src": "img/galleri__evy__evy_add09.jpg", "tag": "Spec", "s": "Studio", "a": 0.8056}, {"src": "img/galleri__evy__evy_15.jpg", "tag": "Spec", "s": "Water", "a": 0.8055}, {"src": "img/galleri__evy__evy_14.mp4", "tag": "Spec", "s": "Water", "a": 0.8055}, {"src": "img/galleri__evy__evy_add08.jpg", "tag": "Spec", "s": "Water", "a": 0.8056}, {"src": "img/galleri__evy__evy_06.jpg", "tag": "Spec", "s": "Lifestyle", "a": 0.8055}, {"src": "img/galleri__evy__evy_08.jpg", "tag": "Spec", "s": "Lifestyle", "a": 0.8055}, {"src": "img/galleri__evy__evy_add04.jpg", "tag": "Spec", "s": "Lifestyle", "a": 0.8056}, {"src": "img/galleri__evy__evy_add06.jpg", "tag": "Spec", "s": "Lifestyle", "a": 0.8056}, {"src": "img/galleri__evy__evy_add07.jpg", "tag": "Spec", "s": "Lifestyle", "a": 0.8056}], "cat": "Sun Care", "link": null}, {"name": "CAIA", "items": [{"src": "img/sel__caia_boat.png", "tag": "Spec", "s": "Boat", "a": 0.5581}, {"src": "img/galleri__caia__caia_03.jpg", "tag": "Spec", "s": "Boat", "a": 0.558}, {"src": "img/galleri__caia__caia_add03.jpg", "tag": "Spec", "s": "Boat", "a": 0.5583}, {"src": "img/sel__caia_6.png", "tag": "Spec", "s": "Night", "a": 0.5581}, {"src": "img/galleri__caia__caia_06.jpg", "tag": "Spec", "s": "Night", "a": 0.558}, {"src": "img/galleri__caia__caia_add01.jpg", "tag": "Spec", "s": "Night", "a": 0.5583}, {"src": "img/galleri__caia__caia_02.jpg", "tag": "Spec", "s": "Terrace", "a": 0.5555}, {"src": "img/galleri__caia__caia_08.jpg", "tag": "Spec", "s": "Terrace", "a": 0.558}, {"src": "img/galleri__caia__caia_13.jpg", "tag": "Spec", "s": "Terrace", "a": 0.558}, {"src": "img/galleri__caia__caia_add02.jpg", "tag": "Spec", "s": "Terrace", "a": 0.5583}, {"src": "img/galleri__caia__caia_add04.jpg", "tag": "Spec", "s": "Terrace", "a": 0.5583}], "cat": "Eyewear", "link": null}, {"name": "By Veira", "items": [{"src": "img/by-veira__img__ByVeira_MiracleHairOil_Model_01_web.jpg", "tag": "Client", "s": "Miracle Hair Oil", "a": 1.771}, {"src": "img/galleri__by_veira__landscape_duo.jpg", "tag": "Client", "s": "Miracle Hair Oil", "a": 1.7928}, {"src": "img/galleri__by_veira__hairoil_4RV5nYF9Aa.jpg", "tag": "Client", "s": "Miracle Hair Oil", "a": 0.8056}, {"src": "img/galleri__by_veira__hairoil_JNWTlL7Oq4.jpg", "tag": "Client", "s": "Miracle Hair Oil", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_landscape_pink.jpg", "tag": "Client", "s": "Blowout Shine Coat · Model", "a": 1.791}, {"src": "img/galleri__by_veira__blowout_model_P3WQAsO42C.jpg", "tag": "Client", "s": "Blowout Shine Coat · Model", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_model_p8E0ydCehw.jpg", "tag": "Client", "s": "Blowout Shine Coat · Model", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_model_xS9Bhd1jfW.jpg", "tag": "Client", "s": "Blowout Shine Coat · Model", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_model_s7iBhgnl8e.jpg", "tag": "Client", "s": "Blowout Shine Coat · Model", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_model_yiYQpiePW9.jpg", "tag": "Client", "s": "Blowout Shine Coat · Model", "a": 0.8056}, {"src": "img/by-veira__img__ByVeira_BlowoutShineCoat_Produkt_web.jpg", "tag": "Client", "s": "Blowout Shine Coat · Product", "a": 0.8054}, {"src": "img/galleri__by_veira__blowout_product_5jJH0n2Kxe.jpg", "tag": "Client", "s": "Blowout Shine Coat · Product", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_product_O6nSg8wynm.jpg", "tag": "Client", "s": "Blowout Shine Coat · Product", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_product_xS9kOR7jfW.jpg", "tag": "Client", "s": "Blowout Shine Coat · Product", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_mEKEBSJhJQ.jpg", "tag": "Client", "s": "Blowout Shine Coat · Product", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_XmQIjNnBfo.jpg", "tag": "Client", "s": "Blowout Shine Coat · Product", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_eIE8gBadqL.jpg", "tag": "Client", "s": "Blowout Shine Coat · Hair", "a": 0.8056}, {"src": "img/galleri__by_veira__blowout_p8CoL4aehw.jpg", "tag": "Client", "s": "Blowout Shine Coat · Hair", "a": 0.8056}], "cat": "Hair Care", "link": null}, {"name": "Maria Nilsdotter", "items": [{"src": "img/sel__nilsdotter.mp4", "tag": "Spec", "s": "Film", "a": 1.0}], "cat": "Jewellery", "link": null}, {"name": "Sachajuan", "items": [{"src": "img/sel__sachajuan_6.png", "tag": "Spec", "s": "Studio", "a": 0.8056}, {"src": "img/galleri__sachajuan__sachajuan_05.jpg", "tag": "Spec", "s": "Studio", "a": 0.8055}, {"src": "img/galleri__sachajuan__sachajuan_06.jpg", "tag": "Spec", "s": "Studio", "a": 0.8055}, {"src": "img/galleri__sachajuan__sachajuan_add02.jpg", "tag": "Spec", "s": "Studio", "a": 0.8056}, {"src": "img/galleri__sachajuan__sachajuan_02.jpg", "tag": "Spec", "s": "Monochrome", "a": 1.7921}, {"src": "img/galleri__sachajuan__sachajuan_10.jpg", "tag": "Spec", "s": "Monochrome", "a": 1.7921}, {"src": "img/galleri__sachajuan__sachajuan_09.jpg", "tag": "Spec", "s": "Portrait", "a": 1.7921}, {"src": "img/galleri__sachajuan__sachajuan_add03.jpg", "tag": "Spec", "s": "Portrait", "a": 0.8056}, {"src": "img/sel__nojs_web.mp4", "tag": "Spec", "s": "Outdoor", "a": 0.5719}, {"src": "img/galleri__sachajuan__sachajuan_add01.jpg", "tag": "Spec", "s": "Outdoor", "a": 0.8056}], "cat": "Hair Care", "link": null}, {"name": "LH Cosmetics", "items": [{"src": "img/sel__lh_cosmetics.webp", "tag": "Spec", "s": "Close-up", "a": 0.7488}, {"src": "img/galleri__lh_cosmetic__lh_cosmetic_06.jpg", "tag": "Spec", "s": "Close-up", "a": 1.7921}, {"src": "img/galleri__lh_cosmetic__lh_cosmetic_03.jpg", "tag": "Spec", "s": "Close-up", "a": 0.8055}, {"src": "img/galleri__lh_cosmetic__lh_cosmetic_02.jpg", "tag": "Spec", "s": "Model", "a": 1.7921}, {"src": "img/galleri__lh_cosmetic__lh_cosmetic_05.jpg", "tag": "Spec", "s": "Model", "a": 0.8055}, {"src": "img/galleri__lh_cosmetic__lh_cosmetic_add01.jpg", "tag": "Spec", "s": "Model", "a": 0.8056}, {"src": "img/galleri__lh_cosmetic__lh_cosmetic_07.jpg", "tag": "Spec", "s": "Campaign", "a": 1.7921}, {"src": "img/galleri__lh_cosmetic__lh_cosmetic_add02.jpg", "tag": "Spec", "s": "Campaign", "a": 0.8286}], "cat": "Beauty", "link": null}, {"name": "Caroline Svedbom", "items": [{"src": "img/sel__caroline.mp4", "tag": "Spec", "s": "Film", "a": 0.8}], "cat": "Jewellery", "link": null}, {"name": "Revision Skincare", "items": [{"src": "img/sel__revision.jpeg", "tag": "Spec", "s": "Model", "a": 0.8056}, {"src": "img/galleri__revision_skincare__revision_skincare_05.jpg", "tag": "Spec", "s": "Model", "a": 0.8055}, {"src": "img/galleri__revision_skincare__revision_skincare_07.jpg", "tag": "Spec", "s": "Model", "a": 0.8055}, {"src": "img/galleri__revision_skincare__revision_skincare_04.jpg", "tag": "Spec", "s": "Model", "a": 0.8055}, {"src": "img/galleri__revision_skincare__revision_skincare_add03.jpg", "tag": "Spec", "s": "Model", "a": 0.8056}, {"src": "img/sel__revision_1.jpeg", "tag": "Spec", "s": "Product", "a": 0.8056}, {"src": "img/galleri__revision_skincare__revision_skincare_03.jpg", "tag": "Spec", "s": "Product", "a": 0.8055}, {"src": "img/galleri__revision_skincare__revision_skincare_add01.jpg", "tag": "Spec", "s": "Product", "a": 0.8056}, {"src": "img/galleri__revision_skincare__revision_skincare_add02.jpg", "tag": "Spec", "s": "Product", "a": 0.8056}], "cat": "Skincare", "link": null}, {"name": "Tom Wood", "items": [{"src": "img/sel__tomwood.jpeg", "tag": "Spec", "s": "Portrait", "a": 1.7778}, {"src": "img/galleri__tomwood__tomwood_02.jpg", "tag": "Spec", "s": "Portrait", "a": 0.8055}, {"src": "img/galleri__tomwood__tomwood_add01.jpg", "tag": "Spec", "s": "Portrait", "a": 0.8056}, {"src": "img/galleri__tomwood__tomwood_add02.jpg", "tag": "Spec", "s": "Portrait", "a": 0.8056}, {"src": "img/galleri__tomwood__tomwood_01.jpg", "tag": "Spec", "s": "Details", "a": 0.806}, {"src": "img/galleri__tomwood__tomwood_04.jpg", "tag": "Spec", "s": "Details", "a": 0.8055}, {"src": "img/galleri__tomwood__tomwood_05.jpg", "tag": "Spec", "s": "Details", "a": 0.8055}, {"src": "img/galleri__tomwood__tomwood_07.jpg", "tag": "Spec", "s": "Details", "a": 0.8055}], "cat": "Jewellery", "link": null}, {"name": "Byena Beauty", "items": [{"src": "img/sel__keune_31.png", "tag": "Spec", "s": "Campaign", "a": 0.7467}, {"src": "img/galleri__keune__keune_add07.jpg", "tag": "Spec", "s": "Campaign", "a": 0.7494}, {"src": "img/galleri__keune__keune_add08.jpg", "tag": "Spec", "s": "Campaign", "a": 0.7467}, {"src": "img/galleri__keune__keune_03.jpg", "tag": "Spec", "s": "Product", "a": 0.7455}, {"src": "img/galleri__keune__keune_04.jpg", "tag": "Spec", "s": "Product", "a": 0.7465}, {"src": "img/galleri__keune__keune_09.jpg", "tag": "Spec", "s": "Product", "a": 0.7435}, {"src": "img/galleri__keune__keune_add01.jpg", "tag": "Spec", "s": "Product", "a": 0.7467}, {"src": "img/galleri__keune__keune_add02.jpg", "tag": "Spec", "s": "Product", "a": 0.7467}, {"src": "img/galleri__keune__keune_add03.jpg", "tag": "Spec", "s": "Product", "a": 0.7467}, {"src": "img/galleri__keune__keune_12.jpg", "tag": "Spec", "s": "Product", "a": 0.7465}, {"src": "img/galleri__keune__keune_17.jpg", "tag": "Spec", "s": "Model", "a": 1.4837}, {"src": "img/galleri__keune__keune_36.jpg", "tag": "Spec", "s": "Model", "a": 0.746}, {"src": "img/galleri__keune__keune_29.mp4", "tag": "Spec", "s": "Model", "a": 0.8}, {"src": "img/galleri__keune__keune_add04.jpg", "tag": "Spec", "s": "Model", "a": 0.7467}, {"src": "img/galleri__keune__keune_add05.jpg", "tag": "Spec", "s": "Model", "a": 0.7453}, {"src": "img/galleri__keune__keune_add06.jpg", "tag": "Spec", "s": "Model", "a": 0.7356}], "cat": "Beauty", "link": null}, {"name": "Pernille Corydon", "items": [{"src": "img/galleri__pernille_corydon__pernille_corydon_03.jpg", "tag": "Spec", "s": "Hands", "a": 0.8055}, {"src": "img/galleri__pernille_corydon__pernille_corydon_04.jpg", "tag": "Spec", "s": "Hands", "a": 0.8055}, {"src": "img/galleri__pernille_corydon__pernille_corydon_07.jpg", "tag": "Spec", "s": "Hands", "a": 1.7921}, {"src": "img/galleri__pernille_corydon__pernille_corydon_add01.jpg", "tag": "Spec", "s": "Hands", "a": 0.8056}, {"src": "img/galleri__pernille_corydon__pernille_corydon_add03.jpg", "tag": "Spec", "s": "Hands", "a": 0.8056}, {"src": "img/galleri__pernille_corydon__pernille_corydon_add04.jpg", "tag": "Spec", "s": "Hands", "a": 0.8056}, {"src": "img/sel__pernille.jpeg", "tag": "Spec", "s": "Portrait", "a": 1.7778}, {"src": "img/galleri__pernille_corydon__pernille_corydon_05.jpg", "tag": "Spec", "s": "Portrait", "a": 0.8055}, {"src": "img/galleri__pernille_corydon__pernille_corydon_add02.jpg", "tag": "Spec", "s": "Portrait", "a": 0.8056}], "cat": "Jewellery", "link": null}, {"name": "Björn Axén", "items": [{"src": "img/galleri__bjorn_axen__bjorn_axen_orig_01.png", "tag": "Spec", "s": "Model", "a": 0.8063}, {"src": "img/galleri__bjorn_axen__bjorn_axen_orig_02.png", "tag": "Spec", "s": "Model", "a": 1.7753}, {"src": "img/galleri__bjorn_axen__bjorn_axen_orig_06.png", "tag": "Spec", "s": "Model", "a": 0.8063}, {"src": "img/galleri__bjorn_axen__bjorn_axen_orig_03.png", "tag": "Spec", "s": "Product", "a": 0.8063}, {"src": "img/galleri__bjorn_axen__bjorn_axen_orig_04.png", "tag": "Spec", "s": "Product", "a": 1.7952}, {"src": "img/galleri__bjorn_axen__bjorn_axen_orig_05.png", "tag": "Spec", "s": "Product", "a": 0.8063}, {"src": "img/galleri__bjorn_axen__bjorn_axen_orig_07.png", "tag": "Spec", "s": "Product", "a": 0.8063}], "cat": "Hair Care", "link": null}, {"name": "Pilgrim", "items": [{"src": "img/galleri__pilgrim__pilgrim_01.jpg", "tag": "Spec", "s": "Model", "a": 1.791}, {"src": "img/galleri__pilgrim__pilgrim_02.jpg", "tag": "Spec", "s": "Model", "a": 0.8056}, {"src": "img/galleri__pilgrim__pilgrim_04.jpg", "tag": "Spec", "s": "Model", "a": 0.8056}, {"src": "img/galleri__pilgrim__pilgrim_05.jpg", "tag": "Spec", "s": "Model", "a": 0.8056}, {"src": "img/galleri__pilgrim__pilgrim_07.jpg", "tag": "Spec", "s": "Model", "a": 0.8056}, {"src": "img/galleri__pilgrim__pilgrim_09.jpg", "tag": "Spec", "s": "Model", "a": 0.8056}, {"src": "img/galleri__pilgrim__pilgrim_03.jpg", "tag": "Spec", "s": "Product", "a": 0.8056}, {"src": "img/galleri__pilgrim__pilgrim_06.jpg", "tag": "Spec", "s": "Product", "a": 0.8056}, {"src": "img/galleri__pilgrim__pilgrim_08.jpg", "tag": "Spec", "s": "Product", "a": 0.8056}], "cat": "Jewellery", "link": null}];
+const lb=document.getElementById('lb'),g=document.getElementById('lbgrid');
+function m(s){return /\.(mp4|mov|m4v)$/i.test(s)?'<video src="'+s+'" autoplay muted loop playsinline></video>':'<img src="'+s+'" alt="" loading="lazy">';}
+document.querySelectorAll('.folder').forEach(f=>f.addEventListener('click',e=>{e.preventDefault();const d=D[f.dataset.i];
+ document.getElementById('lbname').textContent=d.name;document.getElementById('lbcat').textContent=d.cat;
+ const c=document.getElementById('lbcase');c.style.display=d.link?'':'none';if(d.link)c.href=d.link;
+ const ft=f.querySelector('.tag').textContent.trim().toLowerCase();
+ renderSeries(d,ft);
+ lb.classList.add('open');document.body.style.overflow='hidden';requestAnimationFrame(justify);}));
 
+/* Serier: varje märke visas i serier (modell, stilleben ...) med rader i jämn höjd, så att olika format ligger sömlöst. */
+let cur=null;
+function renderSeries(d,ft){cur={d,ft};const grp=[];d.items.forEach(x=>{let s=grp.find(q=>q.n===x.s);if(!s){s={n:x.s,it:[]};grp.push(s);}s.it.push(x);});
+ g.innerHTML=grp.map((s,k)=>'<section class="ser">'+(grp.length>1?'<h4>'+s.n+'</h4>':'')+'<div class="row" data-k="'+k+'">'+s.it.map((x,i)=>'<figure data-i="'+i+'" data-a="'+(x.a||1)+'">'+m(x.src)+(x.tag.toLowerCase()===ft?'':'<span class="tag tag-'+x.tag.toLowerCase()+'">'+x.tag+'</span>')+'</figure>').join('')+'</div></section>').join('');
+ justify();}
+function justify(){const GAP=10,TH=Math.max(220,Math.min(400,window.innerWidth*0.25)),CAP=TH*1.6;
+ if(!g.clientWidth){requestAnimationFrame(justify);return;}
+ g.querySelectorAll('.row').forEach(r=>{const W=r.clientWidth;const figs=[...r.querySelectorAll('figure')].sort((a,b)=>(+a.dataset.i)-(+b.dataset.i));const A=figs.map(fg=>+fg.dataset.a);const tot=A.reduce((x,y)=>x+y,0);
+  /* antal rader så att höjden hamnar nära TH, sedan jämn fördelning: inga ensamma bilder på sista raden */
+  let k=Math.max(1,Math.round(tot*TH/W));if((W-GAP*(figs.length/k-1))/(tot/k)<TH*0.8)k++;k=Math.min(k,figs.length);const rows=Array.from({length:k},()=>[]);const sums=Array(k).fill(0);[...A.keys()].sort((a,b)=>A[b]-A[a]).forEach(i=>{let j=sums.indexOf(Math.min(...sums));rows[j].push(i);sums[j]+=A[i];});rows.forEach(r=>r.sort((a,b)=>a-b));rows.sort((a,b)=>a[0]-b[0]);
+  r.innerHTML='';rows.forEach(ix=>{if(!ix.length)return;const ln=document.createElement('div');ln.className='ln';const sa=ix.reduce((x,i)=>x+A[i],0);let h=(W-GAP*(ix.length-1))/sa;if(h>CAP)h=CAP;ix.forEach(i=>{figs[i].style.width=(A[i]*h)+'px';figs[i].style.height=h+'px';ln.appendChild(figs[i]);});r.appendChild(ln);});});}
+window.addEventListener('resize',()=>{if(lb.classList.contains('open'))justify();});
+function close(){lb.classList.remove('open');g.innerHTML='';document.body.style.overflow='';}
+document.getElementById('lbx').onclick=close;document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+const slug=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+function openHash(){const k=location.hash.slice(1);if(!k)return;const i=D.findIndex(d=>slug(d.name).startsWith(k));if(i>=0)document.querySelector('.folder[data-i="'+i+'"]').click();}
+openHash();
+
+document.getElementById('home').addEventListener('click',e=>{e.preventDefault();if(lb.classList.contains('open'))close();if(location.hash)history.replaceState(null,'',location.pathname);window.scrollTo({top:0,behavior:'smooth'});});
+document.getElementById('worklink').addEventListener('click',e=>{e.preventDefault();if(lb.classList.contains('open'))close();document.getElementById('work').scrollIntoView({behavior:'smooth'});});
+lb.addEventListener('click',e=>{if(e.target===lb)close();});
+window.addEventListener('hashchange',()=>{if(!location.hash&&lb.classList.contains('open'))close();else openHash();});
+</script>
 </body>
 </html>
