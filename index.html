@@ -437,6 +437,10 @@ window.addEventListener('hashchange',()=>{if(!location.hash&&lb.classList.contai
 .folder .cap b{color:#1a1a1a!important;font-size:12px;letter-spacing:.14em}
 .folder .cap span{color:#4a4d52!important;opacity:1;font-size:10px}
 @media(hover:none){.folder .cap,.folder .tag{opacity:1!important}}
+.folder .nm{position:absolute;left:16px;bottom:14px;z-index:2;pointer-events:none;font:600 9px Montserrat,Arial,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 0 14px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.25);transition:opacity .25s}
+.folder::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(0,0,0,.22),rgba(0,0,0,0));transition:opacity .25s}
+.folder:hover .nm,.folder:hover::after,.folder:focus-visible .nm,.folder:focus-visible::after{opacity:0}
+@media(hover:none){.folder .nm,.folder::after{display:none}}
 .folder:hover img,.folder:hover video{transform:none!important}
 .folder,.folder *{text-decoration:none!important}
 .folder .cap b{font-weight:700}
@@ -450,7 +454,7 @@ window.addEventListener('hashchange',()=>{if(!location.hash&&lb.classList.contai
  var all=[].slice.call(wrap.children);
  function key(f){var n=f.querySelector('.cap b').textContent;for(var i=0;i<order.length;i++)if(n.indexOf(order[i])===0)return i;return 99;}
  all.sort(function(a,b){return key(a)-key(b);});
- all.forEach(function(f){wrap.appendChild(f);});
+ all.forEach(function(f){wrap.appendChild(f);var n=document.createElement('span');n.className='nm';n.textContent=f.querySelector('.cap b').textContent;f.appendChild(n);});
 })();
 /* SNS-mappen leder direkt in i caset */
 document.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.folder');if(!f)return;var d=(typeof D!=='undefined')&&D[f.dataset.i];if(d&&d.link){e.preventDefault();e.stopImmediatePropagation();location.href=d.link;}},true);
