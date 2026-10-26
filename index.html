@@ -306,7 +306,7 @@
       <div class="cap"><b>SNS × New Balance 574</b><span>Footwear — Image · Case study</span></div>
     </a>
     <a class="folder" href="#" data-i="1">
-      <video src="img/sel__Maj_Video_1.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <img src="img/cover_efva_attling.jpg" alt="" loading="lazy"/>
       <span class="tag tag-client">Client</span>
       <div class="cap"><b>Efva Attling</b><span>Jewellery — Image & Film · 17 works</span></div>
     </a>
@@ -326,7 +326,7 @@
       <div class="cap"><b>CAIA</b><span>Eyewear — Image · 11 works</span></div>
     </a>
     <a class="folder" href="#" data-i="5">
-      <img src="img/by-veira__img__ByVeira_MiracleHairOil_Model_01_web.jpg" alt="" loading="lazy"/>
+      <img src="img/cover_by_veira.jpg" alt="" loading="lazy"/>
       <span class="tag tag-client">Client</span>
       <div class="cap"><b>By Veira</b><span>Hair Care — Image · 18 works</span></div>
     </a>
@@ -351,7 +351,7 @@
       <div class="cap"><b>Caroline Svedbom</b><span>Jewellery — Film · 1 work</span></div>
     </a>
     <a class="folder" href="#" data-i="10">
-      <img src="img/galleri__revision_skincare__revision_skincare_07.jpg" alt="" loading="lazy"/>
+      <img src="img/cover_revision.jpg" alt="" loading="lazy"/>
       <span class="tag tag-spec">Spec</span>
       <div class="cap"><b>Revision Skincare</b><span>Skincare — Image · 9 works</span></div>
     </a>
@@ -361,7 +361,7 @@
       <div class="cap"><b>Tom Wood</b><span>Jewellery — Image · 8 works</span></div>
     </a>
     <a class="folder" href="#" data-i="12">
-      <img src="img/galleri__keune__keune_03.jpg" alt="" loading="lazy"/>
+      <img src="img/cover_byena_beauty.jpg" alt="" loading="lazy"/>
       <span class="tag tag-spec">Spec</span>
       <div class="cap"><b>Byena Beauty</b><span>Beauty — Image & Film · 17 works</span></div>
     </a>
@@ -428,18 +428,17 @@ window.addEventListener('hashchange',()=>{if(!location.hash&&lb.classList.contai
 .folders{display:grid!important;columns:auto!important;grid-template-columns:repeat(3,1fr);gap:34px 18px}
 .folder{display:flex!important;flex-direction:column;margin:0!important;overflow:visible!important;aspect-ratio:auto!important}
 .folder img,.folder video{width:100%;aspect-ratio:4/5;object-fit:cover;height:auto!important;border-radius:2px}
-.folder .tag{position:static!important;order:3;align-self:flex-start;margin:12px 0 0;background:none!important;padding:0!important;color:var(--burgundy)!important;font-size:10px;letter-spacing:.16em;opacity:.7;border-radius:0}
-.folder .cap{position:static!important;order:2;opacity:1!important;background:none!important;padding:14px 0 0!important}
-.folder .cap b{color:var(--burgundy)!important;font-size:12px;letter-spacing:.14em}
-.folder .cap span{color:var(--burgundy)!important;opacity:.65;font-size:10px}
+.folder{position:relative!important;overflow:hidden!important}
+.folder .tag{position:absolute!important;top:12px;left:12px;z-index:3;margin:0;padding:5px 9px!important;border-radius:20px;background:rgba(245,240,232,.9)!important;color:var(--burgundy)!important;font-size:9px;letter-spacing:.16em;opacity:0;transition:opacity .3s}
+.folder .cap{position:absolute!important;left:0;right:0;bottom:0;z-index:2;opacity:0!important;transition:opacity .3s;background:linear-gradient(to top,rgba(205,209,213,.96) 0%,rgba(205,209,213,.8) 40%,rgba(228,230,232,0) 100%)!important;padding:56px 18px 16px!important}
+.folder:hover .cap,.folder:hover .tag,.folder:focus-visible .cap,.folder:focus-visible .tag{opacity:1!important}
+.folder .cap b{color:#1a1a1a!important;font-size:12px;letter-spacing:.14em}
+.folder .cap span{color:#4a4d52!important;opacity:1;font-size:10px}
+@media(hover:none){.folder .cap,.folder .tag{opacity:1!important}}
 .folder:hover img,.folder:hover video{transform:none!important}
 .folder,.folder *{text-decoration:none!important}
 .folder .cap b{font-weight:700}
 .folder .tag{text-transform:uppercase}
-.more-wrap{margin-top:70px}
-.more-btn{display:block;margin:0 auto;background:none;border:1.5px solid var(--burgundy);color:var(--burgundy);font:700 11px Montserrat,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:16px 28px;cursor:pointer}
-.more-btn:hover{background:var(--burgundy);color:var(--off)}
-.folders.rest{display:none!important;margin-top:50px}.folders.rest.open{display:grid!important}
 @media(max-width:800px){.folders{grid-template-columns:1fr 1fr;gap:26px 12px}}
 </style>
 <script id="calm-js">
@@ -449,12 +448,7 @@ window.addEventListener('hashchange',()=>{if(!location.hash&&lb.classList.contai
  var all=[].slice.call(wrap.children);
  function key(f){var n=f.querySelector('.cap b').textContent;for(var i=0;i<order.length;i++)if(n.indexOf(order[i])===0)return i;return 99;}
  all.sort(function(a,b){return key(a)-key(b);});
- var rest=document.createElement('div');rest.className='folders rest';
- all.forEach(function(f,i){(i<9?wrap:rest).appendChild(f);});
- var w=document.createElement('div');w.className='more-wrap';
- var b=document.createElement('button');b.className='more-btn';b.textContent='Fler arbeten ('+(all.length-9)+')';
- b.onclick=function(){var o=rest.classList.toggle('open');b.textContent=o?'Visa färre':'Fler arbeten ('+(all.length-9)+')';};
- w.appendChild(b);wrap.parentNode.insertBefore(w,wrap.nextSibling);w.appendChild(rest);
+ all.forEach(function(f){wrap.appendChild(f);});
 })();
 /* SNS-mappen leder direkt in i caset */
 document.addEventListener('click',function(e){var f=e.target.closest&&e.target.closest('.folder');if(!f)return;var d=(typeof D!=='undefined')&&D[f.dataset.i];if(d&&d.link){e.preventDefault();e.stopImmediatePropagation();location.href=d.link;}},true);
