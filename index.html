@@ -358,6 +358,11 @@
       <span class="tag tag-spec">Spec</span>
       <div class="cap"><b>Revision Skincare</b><span>Skincare — Image · 9 works</span></div>
     </a>
+    <a class="folder" href="#" data-i="15">
+      <img src="img/galleri__pilgrim__pilgrim_03.jpg" alt="Pilgrim — AI-generated jewellery work by JONA Studio (image)" loading="lazy"/>
+      <span class="tag tag-spec">Spec</span>
+      <div class="cap"><b>Pilgrim</b><span>Jewellery — Image · 9 works</span></div>
+    </a>
     <a class="folder" href="#" data-i="16">
       <video src="img/sel__nike_spec_tile.mp4" autoplay muted loop playsinline preload="metadata"></video>
       <span class="tag tag-spec">Spec</span>
@@ -382,11 +387,6 @@
       <img src="img/galleri__bjorn_axen__bjorn_axen_orig_03.png" alt="Björn Axén — AI-generated hair care work by JONA Studio (image)" loading="lazy"/>
       <span class="tag tag-spec">Spec</span>
       <div class="cap"><b>Björn Axén</b><span>Hair Care — Image · 7 works</span></div>
-    </a>
-    <a class="folder" href="#" data-i="15">
-      <img src="img/galleri__pilgrim__pilgrim_03.jpg" alt="Pilgrim — AI-generated jewellery work by JONA Studio (image)" loading="lazy"/>
-      <span class="tag tag-spec">Spec</span>
-      <div class="cap"><b>Pilgrim</b><span>Jewellery — Image · 9 works</span></div>
     </a>
   </div>
   <footer>
@@ -456,7 +456,7 @@ window.addEventListener('hashchange',()=>{if(!location.hash&&lb.classList.contai
 <script id="calm-js">
 (function(){
  var wrap=document.querySelector('.folders'); if(!wrap||wrap.dataset.calm) return; wrap.dataset.calm=1;
- var order=['By Veira','Efva Attling','EVY Technology','SNS ×','Coelho','CAIA','Sachajuan','Pilgrim','Pernille'];
+ var order=['By Veira','Efva Attling','EVY Technology','SNS ×','Nike','CAIA','Sachajuan','Coelho','Pernille'];
  var all=[].slice.call(wrap.children);
  function key(f){var n=f.querySelector('.cap b').textContent;for(var i=0;i<order.length;i++)if(n.indexOf(order[i])===0)return i;return 99;}
  all.sort(function(a,b){return key(a)-key(b);});
