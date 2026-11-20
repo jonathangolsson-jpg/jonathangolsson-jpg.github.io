@@ -275,6 +275,18 @@
   .folder img,.folder video{width:100%;height:100%!important;object-fit:cover}
   @media (max-width:800px){.folders{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:620px){nav{padding:14px 16px!important}nav ul{gap:14px!important}nav ul a{font-size:10px!important;letter-spacing:.06em!important;white-space:nowrap}.nav-name img{height:34px!important}.hero{padding:0 16px 48px!important}.hero h1{font-size:40px!important;letter-spacing:.03em!important}.hero-bar{flex-wrap:wrap;gap:10px 20px!important}}
+  /* Kundband: rullar under hero. Bara riktiga kunder, riktiga logor i vitt (JO 20 nov 2026). */
+  .clients{display:flex;align-items:center;background:var(--burgundy);color:var(--off);overflow:hidden}
+  .clients-label{flex:none;padding:0 28px 0 48px;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(234,230,223,.6);border-right:1px solid rgba(234,230,223,.2);white-space:nowrap}
+  .clients-run{flex:1;overflow:hidden;padding:26px 0;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 93%,transparent 100%)}
+  .clients-track{display:flex;width:max-content;animation:clientsrun 48s linear infinite}
+  .clients-run:hover .clients-track{animation-play-state:paused}
+  .clients-track{align-items:center;height:48px}
+  .clients-track span{flex:none;padding:0 52px;display:flex;align-items:center}
+  .clients-track img{height:var(--h);width:auto;display:block;opacity:.92}
+  @keyframes clientsrun{to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.clients-track{animation:none}}
+  @media(max-width:620px){.clients-label{padding:0 14px 0 16px;font-size:9px}.clients-run{padding:16px 0}.clients-track{height:38px}.clients-track span{padding:0 28px}.clients-track img{height:calc(var(--h)*.78)}}
 </style>
 </head>
 <body>
@@ -299,6 +311,11 @@
     <span>Performance Creative</span>
   </div>
 </section>
+
+<div class="clients" aria-label="Clients: Efva Attling, EVY Technology, By Veira, Lundgrens">
+  <div class="clients-label">Clients</div>
+  <div class="clients-run"><div class="clients-track" aria-hidden="true"><span><img src="img/logo_efva-attling.png" alt="" style="--h:30px"></span><span><img src="img/logo_evy.svg" alt="" style="--h:26px"></span><span><img src="img/logo_by-veira.png" alt="" style="--h:46px"></span><span><img src="img/logo_lundgrens.png" alt="" style="--h:17px"></span><span><img src="img/logo_efva-attling.png" alt="" style="--h:30px"></span><span><img src="img/logo_evy.svg" alt="" style="--h:26px"></span><span><img src="img/logo_by-veira.png" alt="" style="--h:46px"></span><span><img src="img/logo_lundgrens.png" alt="" style="--h:17px"></span><span><img src="img/logo_efva-attling.png" alt="" style="--h:30px"></span><span><img src="img/logo_evy.svg" alt="" style="--h:26px"></span><span><img src="img/logo_by-veira.png" alt="" style="--h:46px"></span><span><img src="img/logo_lundgrens.png" alt="" style="--h:17px"></span><span><img src="img/logo_efva-attling.png" alt="" style="--h:30px"></span><span><img src="img/logo_evy.svg" alt="" style="--h:26px"></span><span><img src="img/logo_by-veira.png" alt="" style="--h:46px"></span><span><img src="img/logo_lundgrens.png" alt="" style="--h:17px"></span><span><img src="img/logo_efva-attling.png" alt="" style="--h:30px"></span><span><img src="img/logo_evy.svg" alt="" style="--h:26px"></span><span><img src="img/logo_by-veira.png" alt="" style="--h:46px"></span><span><img src="img/logo_lundgrens.png" alt="" style="--h:17px"></span><span><img src="img/logo_efva-attling.png" alt="" style="--h:30px"></span><span><img src="img/logo_evy.svg" alt="" style="--h:26px"></span><span><img src="img/logo_by-veira.png" alt="" style="--h:46px"></span><span><img src="img/logo_lundgrens.png" alt="" style="--h:17px"></span></div></div>
+</div>
 
 <div class="page">
   <div class="section-label" id="work">Selected Works</div>
